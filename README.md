@@ -1,6 +1,27 @@
 # DAB Templates
 Author: Nathan Gardiner <ngardiner@gmail.com>
 
+## Getting Started
+
+These templates are installed on a Proxmox PVE host. 
+### Install pre-requisites
+
+```
+apt-get install dab git
+```
+
+### Clone GIT repository
+
+```
+git clone https://github.com/ngardiner82/dab_templates.git
+```
+
+Template
+```
+cd dab_templates/jessie_minimal/
+make
+```
+
 ## What is DAB?
 DAB is the <a href="https://pve.proxmox.com/wiki/Debian_Appliance_Builder">Debian Appliance Builder</a> developed by the Proxmox PVE project to make the creation of Appliance Containers easier.
 

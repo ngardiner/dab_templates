@@ -6,8 +6,8 @@ include ../Makefile.global
 all: info/init_ok bootstrap global finalize
 
 bootstrap:
-	dab bootstrap
-	dab install ansible
+	dab bootstrap --minimal
+	dab install apt-transport-https ca-certificates locales ntpdate
 
 finalize:
 	dab finalize

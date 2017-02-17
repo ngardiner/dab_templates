@@ -1,18 +1,44 @@
 # SSH Public Key for root. This can be commented out if not required.
-SSH_KEY += "abcd12345\n"
-SSH_KEY += "zxcvbn345\n"
+# Multiple entries can be provided. Proxmox will prompt for root password
+# or SSH key at template deployment, this setting allows
+SSH_KEY +="abcd12345\n"
+SSH_KEY +="zxcvbn345\n"
+
+# Add standard packages that you would like by default on all templates
+PACKAGES += git git-core sudo tcpdump traceroute
+
+# Set your local timezone (comment out for default)
+TIMEZONE=Australia/Melbourne
 
 # Rsyslogd relp
+# If this is set
 RELP_TARGETS += "10.10.10.10"
 
 all:
 
-.PHONY: global rsyslog sshkey
-global:
+.PHONY: global pkgs rsyslog sshkey tz
+global: pkgs rsyslog sshkey tz
+
+pkgs:
+	ifneq ($(strip $(PACKAGES)),)
+		dab install $(PACKAGES)
+	end if
 
 sshkey:
-	mkdir -p $(BASEDIR)/root/.ssh
-	echo $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys
+	ifneq ($(strip $(SSH_KEY)),)
+		mkdir -p $(BASEDIR)/root/.ssh
+		echo -e $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys
+	end if
+
+rootpw:
+	sed -e 's/^PermitRootLogin without-password/PermitRootLogin yes/' -i ${BASEDIR}/etc/ssh/sshd_config
 
 rsyslog:
 	echo $(RELP_TARGETS)
+
+tz:
+	ifneq ($(strip $(TIMEZONE)),)
+		dab exec rm -rf /etc/localtime
+		dab exec ln -s /usr/share/zoneinfo/$(TIMEZONE) /etc/localtime
+		dab exec echo $(TIMEZONE) > /etc/timezone
+	end if
