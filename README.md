@@ -1,4 +1,5 @@
 # DAB Templates
+<<<<<<< HEAD
 Nathan Gardiner <ngardiner@gmail.com>
 
 ## What is DAB?
@@ -10,3 +11,5 @@ The Makefile will trigger a Debian bootstap of a system based on the parameters 
 
 Packages downloaded will be cached in the cache directory at the root of the repository. This will make subsequent DAB builds much faster.
 
+=======
+>>>>>>> cdeb30b537af4d02d82b35fd997e82cc88bd1f24
