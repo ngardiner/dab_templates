@@ -1,1 +1,18 @@
-SSH_KEY = "abcd12345"
+# SSH Public Key for root. This can be commented out if not required.
+SSH_KEY += "abcd12345\n"
+SSH_KEY += "zxcvbn345\n"
+
+# Rsyslogd relp
+RELP_TARGETS += "10.10.10.10"
+
+all:
+
+.PHONY: global rsyslog sshkey
+global:
+
+sshkey:
+	mkdir -p $(BASEDIR)/root/.ssh
+	echo $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys
+
+rsyslog:
+	echo $(RELP_TARGETS)

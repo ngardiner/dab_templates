@@ -7,7 +7,7 @@ all: info/init_ok bootstrap global
 
 bootstrap:
 	dab bootstrap
-	dab install ansible
+	dab install nginx
 	dab finalize
 
 info/init_ok: dab.conf
