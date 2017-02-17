@@ -1,14 +1,10 @@
 
 BASEDIR:=$(shell dab basedir)
+include ../Makefile.global
 
 all: info/init_ok
 	dab bootstrap
-<<<<<<< HEAD
-	dab install software-properties-common
-	dab exec apt-add-repository ppa:ansible/ansible
-	dab update
-=======
->>>>>>> cdeb30b537af4d02d82b35fd997e82cc88bd1f24
+	dab install ansible
 	dab finalize
 
 info/init_ok: dab.conf
