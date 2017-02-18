@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 .veid
-=======
->>>>>>> cdeb30b537af4d02d82b35fd997e82cc88bd1f24
 config
 info
 logfile
 rootfs
+*.tar.gz
+*.whl

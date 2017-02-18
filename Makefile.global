@@ -5,7 +5,7 @@ SSH_KEY +="abcd12345\n"
 SSH_KEY +="zxcvbn345\n"
 
 # Add standard packages that you would like by default on all templates
-PACKAGES += git git-core sudo tcpdump traceroute
+PACKAGES += sudo tcpdump traceroute
 
 # Set this to 1 to permit root login over SSH.
 # This is important if you are using Proxmox without a public SSH key, as 
@@ -21,10 +21,19 @@ TIMEZONE=Australia/Melbourne
 # This allows us immediate visibility of new containers created via rsyslog
 RELP_TARGETS += "10.10.10.10"
 
+# Set this to 1 if you would like colourful ls output and shell prompts by default
+COLOUR=1
+
 all:
 
-.PHONY: global pkgs rootpw rsyslog sshkey tz
-global: pkgs rootpw rsyslog sshkey tz
+.PHONY: colour global pkgs rootpw rsyslog sshkey tz
+global: colour pkgs rootpw rsyslog sshkey tz
+
+colour:
+ifneq ($(strip $(COLOUR)),)
+	dab exec echo "export PS1='\[\033[36m\]\h\[\033[32m\] \w\[\033[00m\]:'" >> ~/.bashrc
+	dab exec echo "alias ls=\"ls -lh --color\"" >> ~/.bashrc
+endif
 
 pkgs:
 ifneq ($(strip $(PACKAGES)),)
@@ -35,7 +44,7 @@ sshkey:
 ifneq ($(strip $(SSH_KEY)),)
 	mkdir -p $(BASEDIR)/root/.ssh
 	echo $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys.tmp
-	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed s/^ //g | sed s/^$//g > $(BASEDIR)/root/.ssh/authorized_keys
+	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed s/^ //g | sed s/^\$//g > $(BASEDIR)/root/.ssh/authorized_keys
 	rm -f $(BASEDIR)/root/.ssh/authorized_keys.tmp
 endif
 

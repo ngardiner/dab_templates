@@ -7,7 +7,7 @@ all: info/init_ok bootstrap global
 
 bootstrap:
 	dab bootstrap
-	dab install nginx
+	dab install letsencrypt nginx
 	dab finalize
 
 info/init_ok: dab.conf
