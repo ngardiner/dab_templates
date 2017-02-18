@@ -7,8 +7,15 @@ These templates are installed on a Proxmox PVE host. It is also possible to inst
 
 ### Install pre-requisites
 
+On an existing Proxmox host:
 ```
 apt-get install dab git
+```
+
+On a non-Proxmox Wheezy host:
+```
+wget http://download.proxmox.com/debian/dists/wheezy/pvetest/binary-amd64/dab_1.2-7_all.deb
+dpkg -i dab_1.2-7_all.deb
 ```
 
 ### Clone GIT repository
@@ -19,7 +26,9 @@ git clone https://github.com/ngardiner82/dab_templates.git
 
 ## Create a Template
 
-Generate the template
+Customize the Makefile.global file to suit your site
+
+Generate the template image for any of the templates
 ```
 cd dab_templates/jessie_minimal/
 make
@@ -27,12 +36,16 @@ make
 
 Move the template to the Proxmox container templates directory
 ```
-mv debian-8.0-debian-8.2-minimal_8.2-1_amd64.tar.gz debian-8.2-minimal_8.2-1_amd64.tar.gz
-mv debian-8.2-minimal_8.2-1_amd64.tar.gz /var/lib/vz/template/cache/
+mv debian-8.0-minimal_8.5-1_amd64.tar.gz /var/lib/vz/template/cache/
+```
+
+Clean up the build data
+```
+make clean
 ```
 
 ## What is DAB?
-DAB is the <a href="https://pve.proxmox.com/wiki/Debian_Appliance_Builder">Debian Appliance Builder</a> developed by the Proxmox PVE project to make the creation of Appliance Containers easier.
+DAB is the <a href="https://pve.proxmox.com/wiki/Debian_Appliance_Builder">Debian Appliance Builder</a> developed by the <a href="http://www.proxmox.com">Proxmox PVE</a> project to make the creation of Appliance Containers easier.
 
 The purpose of these templates are to add some template-time customizations to the Ubuntu templates so that they can be used as a base to automate the deployment of horizonally-scalable containers for data centre pod deployments on Proxmox VE.
 
@@ -53,8 +66,10 @@ In addition to the installation of packages and configuration files, the Makefil
 Packages downloaded will be cached in the cache directory at the root of the repository. This will make subsequent DAB builds much faster.
 
 ## Templates
-| *Template*    | Distro        | Description                 |
-|---------------|---------------|-----------------------------|
-| ansible       | Ubuntu Xenial | Ansible automation platform |
-| homeassistant | Ubuntu Xenial | Home Automation System      |
-| nginx_rproxy  | Ubuntu Xenial | nginx Reverse Proxy         |
+| *Template*      | *Distro*      | *Description*                               |
+|-----------------|---------------|---------------------------------------------|
+| ansible         | Ubuntu Xenial | Ansible automation platform                 |
+| homeassistant   | Ubuntu Xenial | Home Automation System                      |
+| jessie_minimal  | Debian Jessie | Minimal Debian Jessie Installation          |
+| jessie_standard | Debian Jessie | Standard Debian Jessie Installation         |
+| nginx_rproxy    | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |

@@ -31,8 +31,8 @@ global: colour pkgs rootpw rsyslog sshkey tz
 
 colour:
 ifneq ($(strip $(COLOUR)),)
-	dab exec echo "export PS1='\[\033[36m\]\h\[\033[32m\] \w\[\033[00m\]:'" >> ~/.bashrc
-	dab exec echo "alias ls=\"ls -lh --color\"" >> ~/.bashrc
+	echo "export PS1='\[\033[36m\]\h\[\033[32m\] \w\[\033[00m\]:'" >> $(BASEDIR)/etc/environment
+	echo "alias ls=\"ls -lh --color\"" >> $(BASEDIR)/etc/environment
 endif
 
 pkgs:
@@ -44,7 +44,7 @@ sshkey:
 ifneq ($(strip $(SSH_KEY)),)
 	mkdir -p $(BASEDIR)/root/.ssh
 	echo $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys.tmp
-	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed s/^ //g | sed s/^\$//g > $(BASEDIR)/root/.ssh/authorized_keys
+	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed 's/^ //g' | sed 's/^$$//g' > $(BASEDIR)/root/.ssh/authorized_keys
 	rm -f $(BASEDIR)/root/.ssh/authorized_keys.tmp
 endif
 
