@@ -59,8 +59,19 @@ The Makefile.global file at the root of the repository contails global configura
 
 For managability purposes, all of the images created are x86_64/amd64 images. It is possible to target the i386 architecture by changing the Architecture option in the respective dab.conf.
 
+### Authentication and Security
+By default, images created from these templating scripts will not allow root login. This means that one of the following must be true to be able to log in remotely via SSH. Console access will allow login using the specifed password:
+- You must specify one SSH public key via the Proxmox container creation process, or
+- You must specify one or more SSH public keys via the Makefile.generic, or
+- You must specify that root login via SSH using Password authentication is permitted, or
+- You must log in via the console and manually configure another authentication mechanism
+
 ## Customizations
 In addition to the installation of packages and configuration files, the Makefile.global file in the root of the repository is used to define some common customizations such as pre-seeding an SSH public key for the root user to allow ansible to perform additional post-deployment customization.
+
+Each template directory contains two files to aid with customization of the template build process:
+- custom.sh which will execute the commands contained within the script inside of the template container environment during build
+- runonce.sh which will trigger on the first boot of a host created from that template, and then remove itself.
 
 ## Package Cache
 Packages downloaded will be cached in the cache directory at the root of the repository. This will make subsequent DAB builds much faster.
@@ -73,3 +84,5 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | jessie_minimal  | Debian Jessie | Minimal Debian Jessie Installation          |
 | jessie_standard | Debian Jessie | Standard Debian Jessie Installation         |
 | nginx_rproxy    | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
+| xenial_minimal  | Ubuntu Xenial | TBA                                         |
+| xenial_standard | Ubuntu Xenial | TBA                                         |
