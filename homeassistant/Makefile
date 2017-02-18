@@ -30,7 +30,8 @@ bootstrap:
 	install -m 0600 voluptuous-0.9.3.tar.gz ${BASEDIR}/tmp
 	install -m 0600 yarl-0.9.8.tar.gz ${BASEDIR}/tmp
 	dab exec pip3 install --no-index --find-links=file:/tmp homeassistant
-	dab exec rm /tmp/*
+	dab exec rm -f /tmp/*.whl
+	dab exec rm -f /tmp/*.tar.gz
 	dab finalize
 
 info/init_ok: dab.conf

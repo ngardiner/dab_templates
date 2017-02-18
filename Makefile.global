@@ -7,38 +7,49 @@ SSH_KEY +="zxcvbn345\n"
 # Add standard packages that you would like by default on all templates
 PACKAGES += git git-core sudo tcpdump traceroute
 
+# Set this to 1 to permit root login over SSH.
+# This is important if you are using Proxmox without a public SSH key, as 
+# This is not a very secure configuration and the strong suggestion is to have this disabled by
+# your build system as soon after the template is deployed as possible
+PERMITROOT=0
+
 # Set your local timezone (comment out for default)
 TIMEZONE=Australia/Melbourne
 
-# Rsyslogd relp
-# If this is set
+# Rsyslogd RELP log hosts
+# If this is set, we will configure rsyslog for RELP and start logging remotely at build time
+# This allows us immediate visibility of new containers created via rsyslog
 RELP_TARGETS += "10.10.10.10"
 
 all:
 
-.PHONY: global pkgs rsyslog sshkey tz
-global: pkgs rsyslog sshkey tz
+.PHONY: global pkgs rootpw rsyslog sshkey tz
+global: pkgs rootpw rsyslog sshkey tz
 
 pkgs:
-	ifneq ($(strip $(PACKAGES)),)
-		dab install $(PACKAGES)
-	end if
+ifneq ($(strip $(PACKAGES)),)
+	dab install $(PACKAGES)
+endif
 
 sshkey:
-	ifneq ($(strip $(SSH_KEY)),)
-		mkdir -p $(BASEDIR)/root/.ssh
-		echo -e $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys
-	end if
+ifneq ($(strip $(SSH_KEY)),)
+	mkdir -p $(BASEDIR)/root/.ssh
+	echo $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys.tmp
+	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed s/^ //g | sed s/^$//g > $(BASEDIR)/root/.ssh/authorized_keys
+	rm -f $(BASEDIR)/root/.ssh/authorized_keys.tmp
+endif
 
 rootpw:
+ifeq ($(strip $(PERMITROOT)),1)
 	sed -e 's/^PermitRootLogin without-password/PermitRootLogin yes/' -i ${BASEDIR}/etc/ssh/sshd_config
+endif
 
 rsyslog:
 	echo $(RELP_TARGETS)
 
 tz:
-	ifneq ($(strip $(TIMEZONE)),)
-		dab exec rm -rf /etc/localtime
-		dab exec ln -s /usr/share/zoneinfo/$(TIMEZONE) /etc/localtime
-		dab exec echo $(TIMEZONE) > /etc/timezone
-	end if
+ifneq ($(strip $(TIMEZONE)),)
+	dab exec rm -rf /etc/localtime
+	dab exec ln -s /usr/share/zoneinfo/$(TIMEZONE) /etc/localtime
+	echo $(TIMEZONE) > $(BASEDIR)/etc/timezone
+endif

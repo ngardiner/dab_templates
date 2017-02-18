@@ -3,7 +3,8 @@ Author: Nathan Gardiner <ngardiner@gmail.com>
 
 ## Getting Started
 
-These templates are installed on a Proxmox PVE host. 
+These templates are installed on a Proxmox PVE host. It is also possible to install the DAB package from the Proxmox repository on a non-PVE host.
+
 ### Install pre-requisites
 
 ```
@@ -16,10 +17,18 @@ apt-get install dab git
 git clone https://github.com/ngardiner82/dab_templates.git
 ```
 
-Template
+## Create a Template
+
+Generate the template
 ```
 cd dab_templates/jessie_minimal/
 make
+```
+
+Move the template to the Proxmox container templates directory
+```
+mv debian-8.0-debian-8.2-minimal_8.2-1_amd64.tar.gz debian-8.2-minimal_8.2-1_amd64.tar.gz
+mv debian-8.2-minimal_8.2-1_amd64.tar.gz /var/lib/vz/template/cache/
 ```
 
 ## What is DAB?
@@ -34,6 +43,8 @@ Within each of the template directories is a Makefile and a dab.conf (and potent
 The Makefile will trigger a Debian bootstap of a system based on the parameters in the dab.conf and with additional instructions within the Makefile to install packages, copy files and run commands within the template root.
 
 The Makefile.global file at the root of the repository contails global configuration routines that can be used to perform customization such as adding an rsyslog-relp 
+
+For managability purposes, all of the images created are x86_64/amd64 images. It is possible to target the i386 architecture by changing the Architecture option in the respective dab.conf.
 
 ## Customizations
 In addition to the installation of packages and configuration files, the Makefile.global file in the root of the repository is used to define some common customizations such as pre-seeding an SSH public key for the root user to allow ansible to perform additional post-deployment customization.
