@@ -1,8 +1,8 @@
 # SSH Public Key for root. This can be commented out if not required.
 # Multiple entries can be provided. Proxmox will prompt for root password
 # or SSH key at template deployment, this setting allows
-SSH_KEY +="abcd12345\n"
-SSH_KEY +="zxcvbn345\n"
+SSH_KEY +="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9Wh7yS/6uq112z+KvbYnQmam2DQrbxeaa/DsU9fBms7eo3yrAQOSj+l1h+XksWMBKTeYQczo08gCLz+5MijUg2VhrGSl4B/dIYHGRm+/yXiaICb5/76u6+jTr1m5Pk4q2FKPRbb7MOzrUobZr6zNdqg3a56V6oMdedsakEh4P/kupt6CntOM+3gGfk884Pa+1uciUDhaLYRd59EDZUb0uQIx/sKalP9JzM/5/ilQVP0Y3/tzt5DR1zIlV/X2/EYMzN7Ktg3/fd0p07bx7rYrjwpzWmaIfw0F+s2igu1yItCQsAa3S9PAAmY+PwZ+zncZDWpdwVp71/I3082yhjnwl dab_key1@nate.id.au\n"
+SSH_KEY +="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCaLbPkfm7OFUAujAu5LXL7H6B+71HXo+tLkB5j8De1rd42RHx4tF7lvZFCdwFuKe3KWSPoNIRBfg9qESe/DsYQcKMG2dj0GQNC5qtuhbjBOHU6pV7vNx2LVjvNDgglTVDx/eCPv8mt3fIzBBjI2uV0/MVkUpVc0XmXsyqsbqR/uapYJgvrRN5dq8xUSlG+sg8aq98YZSuWpw6mNQMyIfI7e0YbOFTWNcHwh7TYC8/qV/3dPHb3m1HH9anKd4hJkVs7rQLo+9Id6vl0k362xIUawBqlUliqbb/Y5KJDIJebQbRrWnR4c1BNplMGL1AU4rQAXdslzZ8QozjHfUs5XmMRBpFUtGirCYJ1kip25i3mqlE3mPBYTZEZ53/UYzMaKCA11tBZ3ULMzfX0cU2pkcqtiywlOBiMrlHaH5ulZevfHZbn0KXPaxB2Q7vDIT9SH5eFwqBaGoI+VrQDZFcbYV2F5t/zv5WfVGiuHEb9WSQ1++ZcBsSGHKncLSsk03M14wCt23gKUZOwn3inwR8qegvcCBuzuphmNjXpE0bQQMaU0R0sQtf3qZjlnwS6yxACNZ5RXKvqDzUFF0VEoA1CLLNjL3EnNSrhPXXRNKhsprfM428Jq3LoR9pJjzRa8nksE+0LDIwfjPZXqI9nRCTjV+Gegh350OnqtMC4XQKyZVmCOw== dab_key2@nate.id.au\n"
 
 # Add standard packages that you would like by default on all templates
 PACKAGES += sudo tcpdump traceroute

@@ -15,6 +15,10 @@ info/init_ok: dab.conf
 	dab init
 	touch $@
 
+.PHONY: template
+template:
+	cp debian-8.0-standard_8.5-1_amd64.tar.gz /var/lib/vz/template/cache
+
 .PHONY: clean
 clean:
 	dab clean
