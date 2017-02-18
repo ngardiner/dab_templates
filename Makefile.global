@@ -44,7 +44,7 @@ sshkey:
 ifneq ($(strip $(SSH_KEY)),)
 	mkdir -p $(BASEDIR)/root/.ssh
 	echo $(SSH_KEY) >> $(BASEDIR)/root/.ssh/authorized_keys.tmp
-	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed 's/^ //g' | sed 's/^$$//g' > $(BASEDIR)/root/.ssh/authorized_keys
+	cat $(BASEDIR)/root/.ssh/authorized_keys.tmp | sed 's/^ //g' | egrep -v ^$$ > $(BASEDIR)/root/.ssh/authorized_keys
 	rm -f $(BASEDIR)/root/.ssh/authorized_keys.tmp
 endif
 
