@@ -8,6 +8,10 @@ all: info/init_ok bootstrap global finalize
 bootstrap:
 	dab bootstrap --minimal
 	dab install apt-transport-https ca-certificates locales ntpdate
+	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
+	install -m 0700 custom.sh ${BASEDIR}/tmp
+	dab exec /bin/bash /tmp/custom.sh
+	dab exec rm -f /tmp/custom.sh
 
 finalize:
 	dab finalize
