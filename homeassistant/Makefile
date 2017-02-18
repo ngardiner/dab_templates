@@ -32,9 +32,9 @@ bootstrap:
 	dab exec pip3 install --no-index --find-links=file:/tmp homeassistant
 	dab exec rm -f /tmp/*.whl
 	dab exec rm -f /tmp/*.tar.gz
-	install -m 0700 runonce.sh /etc/init.d/firstboot
+	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	install -m 0700 custom.sh ${BASEDIR}/tmp
-	dab exec ${BASEDIR}/tmp/custom.sh
+	dab exec /bin/bash ${BASEDIR}/tmp/custom.sh
 	dab exec rm -f ${BASEDIR}/tmp/custom.sh
 
 finalize:
