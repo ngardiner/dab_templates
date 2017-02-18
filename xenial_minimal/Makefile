@@ -6,12 +6,8 @@ include ../Makefile.global
 all: info/init_ok bootstrap global finalize
 
 bootstrap:
-	dab bootstrap
-	dab install ansible
-	install -m 0700 runonce.sh /etc/init.d/firstboot
-	install -m 0700 custom.sh ${BASEDIR}/tmp
-	dab exec ${BASEDIR}/tmp/custom.sh
-	dab exec rm -f ${BASEDIR}/tmp/custom.sh
+	dab bootstrap --minimal
+	dab install apt-transport-https ca-certificates locales ntpdate
 
 finalize:
 	dab finalize
@@ -22,7 +18,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-ansible_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp debian-8.0-minimal_8.5-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

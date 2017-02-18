@@ -8,6 +8,7 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
+	dab install mysql-server-5.7
 	dab task mysql --password random
 	wget http://repo.zabbix.com/zabbix/3.2/ubuntu/pool/main/z/zabbix/$(PKG) -o $(PKG)
 	install -m 0600 $(PKG) ${BASEDIR}/tmp

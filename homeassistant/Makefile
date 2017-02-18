@@ -2,8 +2,8 @@
 BASEDIR:=$(shell dab basedir)
 include ../Makefile.global
 
-.PHONY: bootstrap global
-all: info/init_ok bootstrap global
+.PHONY: bootstrap global finalize
+all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
@@ -32,11 +32,17 @@ bootstrap:
 	dab exec pip3 install --no-index --find-links=file:/tmp homeassistant
 	dab exec rm -f /tmp/*.whl
 	dab exec rm -f /tmp/*.tar.gz
+
+finalize:
 	dab finalize
 
 info/init_ok: dab.conf
 	dab init
 	touch $@
+
+.PHONY: template
+template:
+	cp ubuntu-16.04-homeassistant_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:
