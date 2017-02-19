@@ -7,7 +7,12 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install python3-pip python3-dev python3-setuptools
+	# These are known packaged dependancies
+	dab install netdiscover python3-aiohttp
+	dab install python3-appdirs python3-chardet python3-dev python3-distro-info python3-fuzzywuzzy
+	dab install python3-jinja2 python3-mutagen python3-netifaces python3-pip python3-six python3-sqlalchemy
+	dab install python3-markupsafe python3-pyparsing python3-requests python3-setuptools
+	dab install python3-tz python3-voluptuous python3-xmltodict python3-yaml python3-zeroconf
 	pip3 install -d . homeassistant
 	install -m 0644 home-assistant@hass.service ${BASEDIR}/etc/systemd/system/home-assistant@hass.service
 	install -m 0600 aiohttp-1.3.1.tar.gz ${BASEDIR}/tmp
@@ -33,6 +38,7 @@ bootstrap:
 	dab exec rm -f /tmp/*.whl
 	dab exec rm -f /tmp/*.tar.gz
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
+	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
 	dab exec /bin/bash /tmp/custom.sh
 	dab exec rm -f /tmp/custom.sh
