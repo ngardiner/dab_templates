@@ -7,6 +7,9 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
+	dab install apache2 build-essential cpanm curl git git-core nodejs npm perl 
+	dab install php7.0-dev php7.0-cli php7.0-curl php7.0-ldap php7.0-mysql 
+	dab install php7.0-sqlite3 python3 python3-pip vim
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
