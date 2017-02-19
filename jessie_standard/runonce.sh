@@ -12,10 +12,26 @@
 #                    Removes itself entirely when done.
 ### END INIT INFO
 
-# Put first boot routines here
+case "$1" in
+  start)
 
-# Once the script has completed execution, delete ourselves
-update-rc.d firstboot disable
-rm $0
+    # Put first boot routines here
 
-exit 0
+    # Once the script has completed execution, delete ourselves
+    update-rc.d firstboot disable
+    rm $0
+  ;;
+  stop)
+    echo "Not Implemented"
+  ;;
+  status)
+    echo "Not Implemented"
+  ;;
+  restart|force-reload)
+    echo "Not Implemented"
+  ;;
+  *)
+    echo "Usage: /etc/init.d/$NAME {start}" >&2
+    exit 1
+  ;;
+esac

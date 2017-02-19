@@ -9,6 +9,11 @@ bootstrap:
 	dab bootstrap
 	dab install fping libiksemel3 libmysqlclient20 libodbc1 mysql-server-5.7 mysql-common
 	dab install zabbix-server-mysql
+	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
+	dab exec update-rc.d firstboot defaults
+	install -m 0700 custom.sh ${BASEDIR}/tmp
+	dab exec /bin/bash /tmp/custom.sh
+	dab exec rm -f /tmp/custom.sh
 
 finalize:
 	dab finalize
