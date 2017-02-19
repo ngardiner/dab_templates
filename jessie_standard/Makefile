@@ -8,6 +8,7 @@ all: info/init_ok bootstrap global finalize
 bootstrap:
 	dab bootstrap
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
+	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
 	dab exec /bin/bash /tmp/custom.sh
 	dab exec rm -f /tmp/custom.sh

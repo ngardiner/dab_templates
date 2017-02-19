@@ -21,7 +21,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-minimal_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-16.04-standard_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

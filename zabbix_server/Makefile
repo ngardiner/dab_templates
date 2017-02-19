@@ -1,6 +1,5 @@
 
 BASEDIR:=$(shell dab basedir)
-PKG=zabbix-server-mysql_3.2.3-1+xenial_amd64.deb
 include ../Makefile.global
 
 .PHONY: bootstrap global finalize
@@ -8,12 +7,8 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install mysql-server-5.7
-	dab task mysql --password random
-	wget http://repo.zabbix.com/zabbix/3.2/ubuntu/pool/main/z/zabbix/$(PKG) -o $(PKG)
-	install -m 0600 $(PKG) ${BASEDIR}/tmp
-	dpkg -i ${BASEDIR}/tmp/$(PKG)
-	rm -f /tmp/$(PKG)
+	dab install fping libiksemel3 libmysqlclient20 libodbc1 mysql-server-5.7 mysql-common
+	dab install zabbix-server-mysql
 
 finalize:
 	dab finalize
@@ -29,6 +24,7 @@ template:
 .PHONY: clean
 clean:
 	dab clean
+	rm -rf *.deb
 	rm -f *~
 
 .PHONY: dist-clean
