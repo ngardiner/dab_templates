@@ -7,7 +7,8 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install apache2 build-essential cpanm curl git git-core nodejs npm perl 
+	dab install libmodule-build-perl
+	dab install apache2 build-essential cpanminus curl git git-core nodejs npm perl
 	dab install php7.0-dev php7.0-cli php7.0-curl php7.0-ldap php7.0-mysql 
 	dab install php7.0-sqlite3 python3 python3-pip vim
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
@@ -25,7 +26,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-standard_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-16.04-devbox_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

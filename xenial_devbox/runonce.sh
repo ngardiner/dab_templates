@@ -17,6 +17,13 @@ case "$1" in
 
     # Put first boot routines here
 
+    # Add a developer account and populate SSH keys
+    useradd -m nate
+
+    # Set git identity information
+    git config --global user.name "Nathan Gardiner"
+    git config --global user.email ngardiner@gmail.com
+
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable
     rm $0

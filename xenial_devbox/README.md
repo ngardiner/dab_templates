@@ -1,6 +1,6 @@
-# Ubuntu Xenial Standard Install
+# Ubuntu Xenial Development Host Install
 
-- Built from a standard debootstrap install of Ubuntu Xenial
+- Contains development tools for PHP, python
 - Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
-- Total uncompressed image size is *579 MB*
-- Total compressed image size is *191 MB*
+- Total uncompressed image size is *899 MB*
+- Total compressed image size is *289 MB*
