@@ -14,7 +14,10 @@ bootstrap:
 	install -m 0700 custom.sh ${BASEDIR}/tmp
 	dab exec /bin/bash /tmp/custom.sh
 	dab exec rm -f /tmp/custom.sh
-	install -m 0655 200.http ${BASEDIR}/etc/haproxy/errors/200.http
+	install -m 0644 200.http ${BASEDIR}/etc/haproxy/errors/200.http
+	install -m 0644 haproxy.cfg ${BASEDIR}/etc/haproxy/haproxy.cfg
+	install -m 0644 acme-http01-webroot.lua ${BASEDIR}/etc/haproxy/acme-http01-webroot.lua
+	install -m 0755 cert-renewal-haproxy.sh ${BASEDIR}/usr/local/bin/cert-renewal-haproxy.sh
 
 finalize:
 	dab finalize
