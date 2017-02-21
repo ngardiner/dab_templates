@@ -24,6 +24,10 @@ case "$1" in
     git config --global user.name "Nathan Gardiner"
     git config --global user.email ngardiner@gmail.com
 
+    # Enable byobu and set backend
+    byobu-enable
+    byobu-select-backend screen
+
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable
     rm $0
