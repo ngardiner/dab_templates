@@ -27,6 +27,7 @@ case "$1" in
     # Enable byobu and set backend
     byobu-enable
     byobu-select-backend screen
+    byobu-ctrl-a emacs
 
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable

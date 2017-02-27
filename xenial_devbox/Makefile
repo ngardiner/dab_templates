@@ -11,7 +11,7 @@ bootstrap:
 	dab install libcpan-meta-yaml-perl libmodule-metadata-perl libversion-perl sshfs
 	dab install apache2 build-essential cpanminus curl git git-core nodejs npm perl
 	dab install php7.0-dev php7.0-cli php7.0-curl php7.0-ldap php7.0-mysql 
-	dab install php7.0-sqlite3 python3 python3-pip vim
+	dab install php7.0-sqlite3 python3 python3-pip python3-httplib2 python3-jinja2 vim
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
