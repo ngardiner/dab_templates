@@ -7,12 +7,9 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install apache2 libdbi-perl perl zoneminder
+	dab install mariadb
 
-	# Enable apache2 modules
-	dab exec a2enmod cgi
-	dab exec a2enconf zoneminder
-	dab exec a2enmod rewrite
+	# Create common database schemas
 
 	# Enable run-once script
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
@@ -30,7 +27,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-zoneminder_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-16.04-mariadb_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:
