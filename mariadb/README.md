@@ -6,7 +6,7 @@ Our customized template of MariaDB is intended to save time and effort when depl
 
 ## Database Schemas Created
    * HomeAssistant
-   * Zonealarm - Created from /
+   * Zonealarm - Created from /usr/share/zoneminder/db/zm_create.sql (under zonealarm package)
 
 ## Usage
 

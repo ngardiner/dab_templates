@@ -10,6 +10,9 @@ bootstrap:
 	dab install mariadb
 
 	# Create common database schemas
+	install -m 0600 zm_create.sql ${BASEDIR}/tmp/zm_create.sql
+	dab exec zm_create.sql
+	dab exec rm /tmp/*.sql
 
 	# Enable run-once script
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
