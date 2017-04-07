@@ -7,10 +7,14 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	# These are known packaged dependancies
-	dab install netdiscover python3-aiohttp
-	dab install python3-appdirs python3-chardet python3-dev python3-distro-info python3-fuzzywuzzy
-	dab exec rm -f /tmp/*.tar.gz
+	dab install apache2 zoneminder
+
+	# Enable apache2 modules
+	dab exec a2enmod cgi
+	dab exec a2enconf zoneminder
+	dab exec a2enmod rewrite
+
+	# Enable run-once script
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp

@@ -1,1 +1,5 @@
+config
+info
+logfile
+rootfs
 *.tar.gz
