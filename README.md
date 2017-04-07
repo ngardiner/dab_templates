@@ -9,7 +9,7 @@ These templates are installed on a Proxmox PVE host. It is also possible to inst
 
 On an existing Proxmox host:
 ```
-apt-get install dab git
+apt-get install dab git make
 ```
 
 On a non-Proxmox Wheezy host:
