@@ -7,8 +7,9 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install rsyslog rsyslog-elasticsearch rsyslog-gnutls rsyslog-mysql
-	dab install rsyslog-relp
+	dab install logstash rsyslog rsyslog-elasticsearch rsyslog-gnutls
+	dab install rsyslog-mysql rsyslog-relp
+	install -m 0700 00-server.conf ${BASEDIR}/etc/rsyslog.d/00-server.conf
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp

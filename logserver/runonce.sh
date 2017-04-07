@@ -17,6 +17,10 @@ case "$1" in
 
     # Put first boot routines here
 
+    # Remove the RELP client configuration, if it exists
+    rm -f /etc/rsyslog.d/00-relp.conf
+    service rsyslogd restart
+
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable
     rm $0
