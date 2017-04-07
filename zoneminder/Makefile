@@ -7,7 +7,7 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install apache2 zoneminder
+	dab install apache2 libdbi-perl perl php5-mysql zoneminder
 
 	# Enable apache2 modules
 	dab exec a2enmod cgi

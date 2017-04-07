@@ -17,6 +17,13 @@ case "$1" in
 
     # Put first boot routines here
 
+    # Set correct permissions
+    chown -R www-data:www-data /usr/share/zoneminder/
+
+    # Enable and start zoneminder
+    systemctl enable zoneminder
+    service zoneminder start
+
     rm $0
   ;;
   stop)
