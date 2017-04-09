@@ -3,4 +3,5 @@ config
 info
 logfile
 rootfs
+jdk-8u121-linux-x64.tar.gz
 ubuntu-16.04-ansible_16.04-1_amd64.tar.gz
