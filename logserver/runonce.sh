@@ -21,6 +21,10 @@ case "$1" in
     rm -f /etc/rsyslog.d/00-relp.conf
     service rsyslogd restart
 
+    # Enable and start logstash
+    systemctl enable logstash
+    systemctl start logstash
+
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable
     rm $0

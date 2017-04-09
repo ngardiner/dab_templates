@@ -15,7 +15,7 @@ bootstrap:
 
 	# Install Apache now, because we'll use it to avoid having to have
 	# internet access for the Java installation
-	dab install apache2
+	dab install apache2 libapache2-mod-php7.0
 	install -m 0666 jdk-8u121-linux-x64.tar.gz ${BASEDIR}/var/www/html/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz
 
 	# Install loganalyzer under apache root
@@ -24,6 +24,8 @@ bootstrap:
 	dab exec bash -c 'mv /var/www/loganalyzer-4.1.5/src /var/www/html/loganalyzer'
 	dab exec rm -rf /var/www/loganalyzer-4.1.5.tar.gz
 	dab exec rm -rf /var/www/loganalyzer-4.1.5
+	install -m 0655 config.php ${BASEDIR}/var/www/html/loganalyzer/config.php
+	dab exec rm /var/www/html/loganalyzer/install.php
 	dab exec chown -R www-data:www-data /var/www/html/loganalyzer
 
 	# Install Oracle 8 and set JAVA_HOME which is a pre-requisite for
@@ -36,8 +38,17 @@ bootstrap:
 
 	# Clean up after installation
 	dab exec rm -rf /var/www/html/otn-pub
+	dab exec chown syslog:adm /var/log/syslog
 
-	install -m 0700 00-server.conf ${BASEDIR}/etc/rsyslog.d/00-server.conf
+	# Upload logstash configuration
+	install -m 0644 10-input-syslog.conf ${BASEDIR}/etc/logstash/conf.d/10-input-syslog.conf
+	install -m 0644 20-filter-syslog.conf ${BASEDIR}/etc/logstash/conf.d/20-filter-syslog.conf
+	install -m 0644 30-output-es.conf ${BASEDIR}/etc/logstash/conf.d/30-output-es.conf
+
+	# Upload rsyslog server configuration
+	install -m 0644 00-server.conf ${BASEDIR}/etc/rsyslog.d/60-server.conf
+
+	# Prepare firstrun scripts
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp

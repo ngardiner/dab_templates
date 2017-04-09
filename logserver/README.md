@@ -5,6 +5,8 @@
 - Installs rsyslogd with the following listeners configured to recieve logs from clients
    - UDP 514 (Classic UDP Syslog)
    - TCP 514 (TCP Syslog)
+   - UDP 5014 (Classic UDP Syslog - to Logstash)
+   - TCP 5014 (Classic TCP Syslog - to Logstash)
    - TCP 20514 (RELP - Reliable Log Protocol)
 
 - Includes a web interface (loganalyzer) for viewing logs from your web browser.
@@ -27,14 +29,14 @@ To create the template archive:
 
 By default, the template will build as a standalone Log Server with listeners for standard UDP/TCP syslog and RELP reception. To enable other functionality, you can use the following options:
 
-- LSIP: Configures a Logstash connection to elasticsearch
-- RSIP: Configures a native rsyslog connection to elasticsearch
+- LSIP: Configures a Logstash connection to elasticsearch *not yet implemented*
+- RSIP: Configures a native rsyslog connection to elasticsearch *not yet implemented*
 
 To copy the template to the Proxmox VE Templates Directory:
 
 ```make template```
 
-To clean and return the template directory to original state
+To clean and return the template directory to original state:
 
 ```make clean```
 
