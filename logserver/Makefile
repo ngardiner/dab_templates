@@ -19,9 +19,12 @@ bootstrap:
 	install -m 0666 jdk-8u121-linux-x64.tar.gz ${BASEDIR}/var/www/html/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz
 
 	# Install loganalyzer under apache root
-	install -m 0666 loganalyzer-4.1.5.tar.gz ${BASEDIR}/var/www/html/loganalyzer-4.1.5.tar.gz
-	dab exec cd /var/www/html && tar xzf loganalyzer-4.1.5.tar.gz
-	dab exec mv /var/www/html/loganalyzer-4.1.5 /var/www/html/loganalyzer
+	install -m 0666 loganalyzer-4.1.5.tar.gz ${BASEDIR}/var/www/loganalyzer-4.1.5.tar.gz
+	dab exec bash -c 'cd /var/www && tar xzf loganalyzer-4.1.5.tar.gz'
+	dab exec bash -c 'mv /var/www/loganalyzer-4.1.5/src /var/www/html/loganalyzer'
+	dab exec rm -rf /var/www/loganalyzer-4.1.5.tar.gz
+	dab exec rm -rf /var/www/loganalyzer-4.1.5
+	dab exec chown -R www-data:www-data /var/www/html/loganalyzer
 
 	# Install Oracle 8 and set JAVA_HOME which is a pre-requisite for
 	# installation of logstash

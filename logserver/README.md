@@ -14,8 +14,8 @@
    - See the elk template included in this repository for a template providing elasticsearch and kibana to be used alongside this template for full ELK functionality.
 
 - Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
-- Total uncompressed image size is *588 MB*
-- Total compressed image size is *193 MB*
+- Total uncompressed image size is *1398 MB*
+- Total compressed image size is *652 MB*
 
 ### Usage
 
@@ -37,6 +37,18 @@ To copy the template to the Proxmox VE Templates Directory:
 To clean and return the template directory to original state
 
 ```make clean```
+
+### After Install
+
+After install, begin sending syslog from your clients to the logserver. You can do this via:
+
+Stadnard Systlog
+```test```
+
+rsyslog
+```test```
+
+You can view your logs by using the loganalyzer GUI at http://[container IP]/loganalyzer/
 
 ## Customization and Integration
 
