@@ -16,8 +16,12 @@ bootstrap:
 	# Install Apache now, because we'll use it to avoid having to have
 	# internet access for the Java installation
 	dab install apache2
-	dab exec mkdir -p /var/www/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441
-	install -m 0700 jdk-8u121-linux-x64.tar.gz ${BASEDIR}/var/www/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz
+	install -m 0666 jdk-8u121-linux-x64.tar.gz ${BASEDIR}/var/www/html/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz
+
+	# Install loganalyzer under apache root
+	install -m 0666 loganalyzer-4.1.5.tar.gz ${BASEDIR}/var/www/html/loganalyzer-4.1.5.tar.gz
+	dab exec cd /var/www/html && tar xzf loganalyzer-4.1.5.tar.gz
+	dab exec mv /var/www/html/loganalyzer-4.1.5 /var/www/html/loganalyzer
 
 	# Install Oracle 8 and set JAVA_HOME which is a pre-requisite for
 	# installation of logstash
@@ -26,6 +30,10 @@ bootstrap:
 
 	dab install logstash rsyslog rsyslog-elasticsearch rsyslog-gnutls
 	dab install rsyslog-mysql rsyslog-relp
+
+	# Clean up after installation
+	dab exec rm -rf /var/www/html/otn-pub
+
 	install -m 0700 00-server.conf ${BASEDIR}/etc/rsyslog.d/00-server.conf
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
@@ -40,6 +48,10 @@ prepare:
 ifeq ("$(wildcard jdk-8u121-linux-x64.tar.gz)","")
 	# Download the JDK binary in preparation for use during install
 	wget -c -O "jdk-8u121-linux-x64.tar.gz" --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz"
+endif
+ifeq ("$(wildcard loganalyzer-4.1.5.tar.gz)","")
+	# Download LogAnalyzer
+	wget -c -O "loganalyzer-4.1.5.tar.gz" --no-check-certificate http://download.adiscon.com/loganalyzer/loganalyzer-4.1.5.tar.gz
 endif
 
 info/init_ok: dab.conf
