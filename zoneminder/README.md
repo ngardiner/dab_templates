@@ -1,8 +1,14 @@
 # Zoneminder
 
+## Template details
+
 The Zoneminder platform allows centralised management of IP Cameras
 
-## Dependancies
+- Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
+- Total uncompressed image size is *1410 MB*
+- Total compressed image size is *656 MB*
+
+### Dependancies
    * MariaDB - The zoneminder system relies on a MariaDB database which must be deployed separately
 
 ## Usage
