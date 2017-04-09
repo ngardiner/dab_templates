@@ -8,6 +8,10 @@ all: info/init_ok prepare bootstrap global finalize
 bootstrap:
 	dab bootstrap
 
+	# Install Prerequisites
+	dab install perl
+
+	# Install LMS
 	install -m 0700 logitechmediaserver_7.9.0_amd64.deb ${BASEDIR}/tmp/logitechmediaserver_7.9.0_amd64.deb
 	dab exec dpkg -i /tmp/logitechmediaserver_7.9.0_amd64.deb
 

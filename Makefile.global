@@ -60,8 +60,8 @@ endif
 rsyslog:
 ifneq ($(strip $(RELP_TARGETS)),)
 	dab install rsyslog-relp
-	echo "module(load=\"omrelp\")" > /etc/rsyslog.d/00-relp.conf
-	echo "action(type=\"omrelp\" target=\"$(RELP_TARGETS)\" port=\"20514\")" >> /etc/rsyslog.d/00-relp.conf
+	echo "module(load=\"omrelp\")" > $(BASEDIR)/etc/rsyslog.d/00-relp.conf
+	echo "action(type=\"omrelp\" target=\"$(RELP_TARGETS)\" port=\"20514\")" >> $(BASEDIR)/etc/rsyslog.d/00-relp.conf
 endif
 
 tz:

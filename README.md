@@ -89,9 +89,10 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 |-----------------|---------------|---------------------------------------------|
 | ansible         | Ubuntu Xenial | Ansible automation platform                 |
 | homeassistant   | Ubuntu Xenial | Home Automation System                      |
-| jessie_minimal  | Debian Jessie | Minimal Debian Jessie Installation          |
-| jessie_standard | Debian Jessie | Standard Debian Jessie Installation         |
-| <a href="logserver/">logserver</a>       | Ubuntu Xenial | rsyslog remote reception, logstash, webui   |
+| <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
+| <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
+| <a href="lms/>lms</a>                          | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
+| <a href="logserver/">logserver</a>             | Ubuntu Xenial | rsyslog remote reception, logstash, webui   |
 | nginx_rproxy    | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
 | xenial_minimal  | Ubuntu Xenial | TBA                                         |
 | xenial_standard | Ubuntu Xenial | TBA                                         |
