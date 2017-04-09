@@ -38,6 +38,7 @@ bootstrap:
 
 	# Clean up after installation
 	dab exec rm -rf /var/www/html/otn-pub
+	dab exec touch /var/log/syslog
 	dab exec chown syslog:adm /var/log/syslog
 
 	# Upload logstash configuration
@@ -47,6 +48,16 @@ bootstrap:
 
 	# Upload rsyslog server configuration
 	install -m 0644 00-server.conf ${BASEDIR}/etc/rsyslog.d/60-server.conf
+
+	# If SHIP=1, ship rsyslog messages to logstash
+ifeq ($(strip $(SHIP)),1)
+	install -m 0644 70-ship-logstash.conf ${BASEDIR}/etc/rsyslog.d/70-ship-logstash.conf
+endif
+
+	# If specified, set elasticsearch server IP
+ifneq ($(strip $(LSIP)),)
+	dab exec sed -i s/localhost/$(LSIP)/g /etc/logstash/conf.d/30-output-es.conf
+endif
 
 	# Prepare firstrun scripts
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot

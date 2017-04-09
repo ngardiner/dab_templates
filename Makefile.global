@@ -9,7 +9,7 @@ SSH_KEY +="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDqvpOmtZTt5vGjKEbE+xF9RpjnhHa6c
 SSH_KEY +="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7CAJhyapph+OQV3evDflSdHn9zRY+caRj3EqhcTgLQItZgDjYUxwW4zEWKAFuASG0E8Df3caPPkLGOZx0qhy2lBQAufOdejboMwMSoSahP2Mlz8+0zIGS8T/4J5mDhm/hX6l1pMMWZM69iLENwOjrOFI64453CYVBiDF3trEuP9ybc9Yj595+YPcUin8Ak/cYsAkRjP2V5LG3MqisGFyKx5I0IAGFOsRda5r9ogeWGKLbO4qAHx/L2RxiCX9gCiFquaqzwCbE3XEOe0tY4eD6K6CpfgAd1MKivDm3yqGKcUZ5vq8xrnnIENx9tE4VloPv0I/y40LzFW03rGUsXlYUrrQyzwj3OautM6pEV5k5bejs9Qe9Znxb15G5+ffRcAowf9TeN5JnZ+pP6htgWqjuIr21gibvzAQweFANV5l8LpnrH/ezwNRgN1gDGDPTJEDa7i++wNIyOVacJoGwMueOlsqc+RQfH7zHXvqz1gRgvUf31gSboFRhmwTawlPCRW4/MAD7A8TlNnpRqAn1hK1/dAn+WSDPvAu9ZxiU0Z2A3ixmnMEOLLcMil/5JhkYcCSFcfO445p455oCB5d473pejm4WZkM0Xg277ArrC2eqVppTCftWjiZNNEE6zEoQwWaWpjZolvX56omG34QSMRx+SmrztZv4rzBJFnwNWv1WRQ== dabkey3@nate.id.au\n"
 
 # Add standard packages that you would like by default on all templates
-PACKAGES += chrony sudo tcpdump traceroute
+PACKAGES += sudo tcpdump traceroute
 
 # Set this to 1 to permit root login over SSH.
 # This is important if you are using Proxmox without a public SSH key, as 

@@ -16,8 +16,8 @@
    - See the elk template included in this repository for a template providing elasticsearch and kibana to be used alongside this template for full ELK functionality.
 
 - Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
-- Total uncompressed image size is *1398 MB*
-- Total compressed image size is *652 MB*
+- Total uncompressed image size is *1412 MB*
+- Total compressed image size is *657 MB*
 
 ### Usage
 
@@ -29,8 +29,15 @@ To create the template archive:
 
 By default, the template will build as a standalone Log Server with listeners for standard UDP/TCP syslog and RELP reception. To enable other functionality, you can use the following options:
 
-- LSIP: Configures a Logstash connection to elasticsearch *not yet implemented*
+- SHIP: Specify SHIP=1 to automatically configure the sending of rsyslog messages to logstash.
+- LSIP: Configures a Logstash connection to elasticsearch server IP specified
 - RSIP: Configures a native rsyslog connection to elasticsearch *not yet implemented*
+
+#### Examples
+
+- The following command will build the template, enable automatic log shipping of rsyslog logs to logstash, and configure logstash to send logs to elasticsearch server 192.168.28.11
+
+```make SHIP=1 LSIP=192.168.28.11```
 
 To copy the template to the Proxmox VE Templates Directory:
 
