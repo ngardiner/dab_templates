@@ -19,6 +19,7 @@ case "$1" in
 
     # Remove the RELP client configuration, if it exists
     rm -f /etc/rsyslog.d/00-relp.conf
+    chown syslog:adm /var/log/syslog
     service rsyslogd restart
 
     # Enable and start logstash

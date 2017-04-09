@@ -59,6 +59,12 @@ ifneq ($(strip $(LSIP)),)
 	dab exec sed -i s/localhost/$(LSIP)/g /etc/logstash/conf.d/30-output-es.conf
 endif
 
+	# if specified, enable native elasticsearch output
+ifneq ($(strip $(RSIP)),)
+	install -m 0644 80-ship-es.conf ${BASEDIR}/etc/rsyslog.d/80-ship-es.conf
+	dab exec sed -i s/localhost/$(RSIP)/g /etc/rsyslog.d/80-ship-es.conf
+endif
+
 	# Prepare firstrun scripts
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults

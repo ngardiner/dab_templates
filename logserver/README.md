@@ -16,8 +16,8 @@
    - See the elk template included in this repository for a template providing elasticsearch and kibana to be used alongside this template for full ELK functionality.
 
 - Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
-- Total uncompressed image size is *1412 MB*
-- Total compressed image size is *657 MB*
+- Total uncompressed image size is *1410 MB*
+- Total compressed image size is *656 MB*
 
 ### Usage
 
@@ -31,6 +31,7 @@ By default, the template will build as a standalone Log Server with listeners fo
 
 - SHIP: Specify SHIP=1 to automatically configure the sending of rsyslog messages to logstash.
 - LSIP: Configures a Logstash connection to elasticsearch server IP specified
+   - Note: If you set this option and find your container unaccessible via SSH (connection refused), it may be because the logstash service is unable to reach the elasticsearch server. In this case, log on to the Proxmox server and execute the ```lxc-attach --name [Container ID]``` command, and stop logstash with the ```systemctl stop logstash``` command.
 - RSIP: Configures a native rsyslog connection to elasticsearch *not yet implemented*
 
 #### Examples
@@ -38,6 +39,10 @@ By default, the template will build as a standalone Log Server with listeners fo
 - The following command will build the template, enable automatic log shipping of rsyslog logs to logstash, and configure logstash to send logs to elasticsearch server 192.168.28.11
 
 ```make SHIP=1 LSIP=192.168.28.11```
+
+- The following command will build the template, enable log shipping natively from rsyslog to elasticsearch, and send logs to elasticsearch server 192.168.28.11
+
+```make RSIP=192.168.28.11```
 
 To copy the template to the Proxmox VE Templates Directory:
 
@@ -56,6 +61,14 @@ Stadnard Systlog
 
 rsyslog
 ```test```
+
+rsyslog (RELP):
+```
+cat << EOF > /etc/rsyslog.d/00-relp.conf
+  module(load="omrelp")
+  action(type="omrelp" target="[Server IP]" port="20514")
+EOF
+```
 
 You can view your logs by using the loganalyzer GUI at http://[container IP]/loganalyzer/
 
