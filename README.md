@@ -94,6 +94,6 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | <a href="lms/>lms</a>                          | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
 | <a href="logserver/">logserver</a>             | Ubuntu Xenial | rsyslog remote reception, logstash, webui   |
 | nginx_rproxy    | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
-| xenial_minimal  | Ubuntu Xenial | TBA                                         |
-| xenial_standard | Ubuntu Xenial | TBA                                         |
+| <a href="xenial_minimal/">xenial_minimal</a>   | Ubuntu Xenial | Minimal Ubuntu Xenial Installation          |
+| <a href="xenial_standard/">xenial_standard</a> | Ubuntu Xenial | Standard Ubuntu Xenial Installation         |
 | zoneminder      | Ubuntu Xenial | IP Camera Manager used for security         |
