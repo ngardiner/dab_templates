@@ -9,7 +9,10 @@ Home Assistant is a home automation platform written in Python. It provides the 
 - Total uncompressed image size is *711 MB*
 - Total compressed image size is *259 MB*
 
-## How to use
+### Prerequisites
+- Requires the python3-pip package to be installed on the (dab) system used to create the template
+
+### How to use
 
 - Deploy the Home Assistant template as a Linux Container and wait for it to boot.
 - Point your web browser to http://[container ip]:8123/ to view the Web Interface.
