@@ -13,7 +13,7 @@ bootstrap:
 	dab install python3-jinja2 python3-mutagen python3-netifaces python3-pip python3-six python3-sqlalchemy
 	dab install python3-markupsafe python3-pyparsing python3-requests python3-setuptools
 	dab install python3-tz python3-voluptuous python3-xmltodict python3-yaml python3-zeroconf
-	pip3 install -d . homeassistant
+	dab exec pip3 install -d . homeassistant
 	install -m 0644 home-assistant@hass.service ${BASEDIR}/etc/systemd/system/home-assistant@hass.service
 	install -m 0600 aiohttp-1.3.1.tar.gz ${BASEDIR}/tmp
 	install -m 0600 appdirs-1.4.0-py2.py3-none-any.whl ${BASEDIR}/tmp

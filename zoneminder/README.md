@@ -25,6 +25,18 @@ To clean and return the template directory to original state
 
 ```make clean```
 
-## Development Topics
+### Post-Installation
 
-### Testing Results
+These instructions assume that you have used the template mariadb server for the mysql server, as this template will automatically create the required DB schema.
+
+   * On the MariaDB server, execute the following command:
+
+```mysql -e "GRANT ALL on zm.* to zmuser@'<ZM Server IP>' identified by '<password>'"```
+
+   * On the ZoneMinder server, edit /etc/zm/zm.conf and set ZM_DB_HOST and ZM_DB_PASS
+
+   * On the ZoneMinder server, edit /etc/php/7.0/apache2/php.ini and set timezone to your preferred timezone. Restart apache2:
+
+```service apache2 restart```
+
+   * Visit http://<zoneminder server>/zm. You should see the ZoneMinder UI screen.

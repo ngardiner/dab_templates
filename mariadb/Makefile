@@ -7,11 +7,11 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install mariadb
+	dab install mariadb-server
 
 	# Create common database schemas
 	install -m 0600 zm_create.sql ${BASEDIR}/tmp/zm_create.sql
-	dab exec zm_create.sql
+	dab exec mysql < /tmp/zm_create.sql
 	dab exec rm /tmp/*.sql
 
 	# Enable run-once script

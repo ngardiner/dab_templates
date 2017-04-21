@@ -96,4 +96,4 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | nginx_rproxy    | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
 | <a href="xenial_minimal/">xenial_minimal</a>   | Ubuntu Xenial | Minimal Ubuntu Xenial Installation          |
 | <a href="xenial_standard/">xenial_standard</a> | Ubuntu Xenial | Standard Ubuntu Xenial Installation         |
-| zoneminder      | Ubuntu Xenial | IP Camera Manager used for security         |
+| <a href="zoneminder/">zoneminder</a>      | Ubuntu Xenial | IP Camera Manager used for security         |
