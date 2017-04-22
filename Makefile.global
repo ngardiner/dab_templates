@@ -11,6 +11,9 @@ SSH_KEY +="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7CAJhyapph+OQV3evDflSdHn9zRY+c
 # Add standard packages that you would like by default on all templates
 PACKAGES += sudo tcpdump traceroute
 
+# If you would like to use ansible to manage these hosts, you need the following
+PACKAGES += aptitude python
+
 # Set this to 1 to permit root login over SSH.
 # This is important if you are using Proxmox without a public SSH key, as 
 # This is not a very secure configuration and the strong suggestion is to have this disabled by
