@@ -87,7 +87,7 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 ## Templates
 | *Template*      | *Distro*      | *Description*                               |
 |-----------------|---------------|---------------------------------------------|
-| ansible         | Ubuntu Xenial | Ansible automation platform                 |
+| <a href="ansible/">ansible</a>         | Ubuntu Xenial | Ansible automation platform                 |
 | homeassistant   | Ubuntu Xenial | Home Automation System                      |
 | <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
 | <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
