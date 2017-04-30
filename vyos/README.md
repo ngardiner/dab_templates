@@ -16,6 +16,7 @@ It is very unlikely that we will ever reach VyOS level functionality - at the ve
 biosdevname - installs in /sbin
 busybox - issue
 vyatta-cfg - issue, unfixed
+vyatta-cfg-quagga - works
 vyatta-zone - works, installs perl modules (need to include perl)
 
 To fix busybox issue:
