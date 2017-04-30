@@ -22,7 +22,7 @@ IP=igmpproxy
 IR=vyatta-iproute
 IS=ipset
 PA=pmacct
-PC=libpcap
+PC=libcap
 PP=ppp
 PT=iptables
 OV=vyatta-openvpn
@@ -33,6 +33,7 @@ VU=vyatta-util
 VV=vyatta-vrrp
 VZ=vyatta-zone
 WG=vyatta-webgui
+WP=vyatta-webproxy
 
 .PHONY: bootstrap global finalize
 all: info/init_ok bootstrap global finalize
@@ -44,8 +45,10 @@ bootstrap:
 	dab install autoconf automake bison build-essential flex gawk
 	dab install gobject-introspection libpci-dev libtool libzip-dev
 	dab install libapt-pkg-dev libglib2.0-dev pkg-config texinfo
-	dab install libnfnetlink-dev libmnl-dev
+	dab install libnfnetlink-dev libmnl-dev libnetfilter-conntrack-dev
+	dab install libnetfilter-cttimeout-dev libnetfilter-cthelper0-dev
 	dab install libboost-filesystem-dev libglib2.0-dev libc-ares-dev
+	dab install libnetfilter-queue-dev libdb-dev
 
 	# Clone git repos from vyos
 	$(GC)$(BA) -b $(RELEASE)
@@ -70,6 +73,7 @@ bootstrap:
 	$(GC)$(VV) -b $(RELEASE)
 	$(GC)$(VZ) -b $(RELEASE)
 	$(GC)$(WG) -b $(RELEASE)
+	$(GC)$(WP) -b $(RELEASE)
 
 	# Place vyos sources inside image
 	rsync -a $(BA) ${BASEDIR}/tmp/
@@ -94,6 +98,10 @@ bootstrap:
 	rsync -a $(VV) ${BASEDIR}/tmp/
 	rsync -a $(VZ) ${BASEDIR}/tmp/
 	rsync -a $(WG) ${BASEDIR}/tmp/
+	rsync -a $(WP) ${BASEDIR}/tmp/
+
+	# Apply patches prior to compile
+	cat patch/* | patch -p0
 
 	# Build Vyatta bash
 	$(DE) "$(CD)$(BA) && ./configure > /tmp/$(BA).configure.log 2>&1"
@@ -111,11 +119,13 @@ bootstrap:
 	$(DE) "$(CD)$(BB) && make defconfig > /tmp/$(BB).makedefconfig.log 2>&1"
 	-$(DE) "$(CD)$(BB) && make install > /tmp/$(BB).makeinstall.log 2>&1"
 
+	# vyatta-cfg compile
 	$(DE) "$(CD)$(CF) && aclocal > /tmp/$(CF).aclocal.log 2>&1"
 	$(DE) "$(CD)$(CF) && $(AR) > /tmp/$(CF).autoreconf.log 2>&1"
 	$(DE) "$(CD)$(CF) && $(AM) > /tmp/$(CF).automake.log 2>&1"
 	$(DE) "$(CD)$(CF) && autoconf > /tmp/$(CF).autoconf.log 2>&1"
 	$(DE) "$(CD)$(CF) && ./configure > /tmp/$(CF).configure.log 2>&1"
+	cp rootfs/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h rootfs/usr/include/glibconfig.h
 	-$(DE) "$(CD)$(CF) && make > /tmp/$(CF).make.log 2>&1"
 	-$(DE) "$(CD)$(CF) && make install > /tmp/$(CF).makeinstall.log 2>&1"
 
@@ -220,11 +230,22 @@ bootstrap:
 	$(DE) "$(CD)$(PC) && make > /tmp/$(PC).make.log 2>&1"
 	$(DE) "$(CD)$(PC) && make install > /tmp/$(PC).makeinstall.log 2>&1"
 
+	$(DE) "$(CD)$(PP) && make > /tmp/$(PP).make.log 2>&1"
+	$(DE) "$(CD)$(PP) && make install > /tmp/$(PP).makeinstall.log 2>&1"
+
+	$(DE) "$(CD)$(WG) && make > /tmp/$(WG).make.log 2>&1"
+	$(DE) "$(CD)$(WG) && make install > /tmp/$(WG).makeinstall.log 2>&1"
+
+	$(DE) "$(CD)$(WP) && make > /tmp/$(WP).make.log 2>&1"
+	$(DE) "$(CD)$(WP) && make install > /tmp/$(WP).makeinstall.log 2>&1"
+
 	# Remove build dependencies
 	dab exec dpkg -r autoconf automake flex gawk libpci-dev libzip-dev
 	dab exec dpkg -r bison libapt-pkg-dev libglib2.0-dev texinfo
 	dab exec dpkg -r libboost-filesystem-dev libglib2.0-dev libc-ares-dev
-	dab exec dpkg -r libnfnetlink-dev libmnl-dev
+	dab exec dpkg -r libnfnetlink-dev libmnl-dev libnetfilter-conntrack-dev
+	dab exec dpkg -r libnetfilter-cttimeout-dev libnetfilter-cthelper0-dev
+	dab exec dpkg -r libnetfilter-queue-dev libdb-dev
 	dab exec dpkg -r build-essential gobject-introspection
 	dab exec apt-get clean
 
@@ -237,11 +258,13 @@ bootstrap:
 	dab exec rm -rf /tmp/$(CZ)
 	dab exec rm -rf /tmp/$(OV)
 	dab exec rm -rf /tmp/$(QU)
-	dab exec rm -rf /tmp/$(VZ)
 	dab exec rm -rf /tmp/$(VN)
 	dab exec rm -rf /tmp/$(VO)
 	dab exec rm -rf /tmp/$(VU)
 	dab exec rm -rf /tmp/$(VV)
+	dab exec rm -rf /tmp/$(VZ)
+	dab exec rm -rf /tmp/$(WG)
+	dab exec rm -rf /tmp/$(WP)
 
 	# Perform final configuration
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
@@ -276,14 +299,18 @@ clean:
 	rm -rf $(IR)
 	rm -rf $(IS)
 	rm -rf $(OV)
+	rm -rf $(PA)
 	rm -rf $(PC)
+	rm -rf $(PP)
 	rm -rf $(PT)
+	rm -rf $(QU)
 	rm -rf $(VZ)
 	rm -rf $(VN)
 	rm -rf $(VO)
 	rm -rf $(VU)
 	rm -rf $(VV)
-	rm -rf $(QU)
+	rm -rf $(WG)
+	rm -rf $(WP)
 
 .PHONY: dist-clean
 dist-clean:
@@ -300,11 +327,15 @@ dist-clean:
 	rm -rf $(IR)
 	rm -rf $(IS)
 	rm -rf $(OV)
+	rm -rf $(PA)
 	rm -rf $(PC)
+	rm -rf $(PP)
 	rm -rf $(PT)
+	rm -rf $(QU)
 	rm -rf $(VZ)
 	rm -rf $(VN)
 	rm -rf $(VO)
 	rm -rf $(VU)
 	rm -rf $(VV)
-	rm -rf $(QU)
+	rm -rf $(WG)
+	rm -rf $(WP)

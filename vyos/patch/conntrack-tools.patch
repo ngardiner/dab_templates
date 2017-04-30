@@ -1,0 +1,10 @@
+--- conntrack-tools/src/parse.c.orig	2017-04-30 21:16:12.608493642 +1000
++++ conntrack-tools/src/parse.c	2017-04-30 21:16:24.520604432 +1000
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include "network.h"
++#include <stddef.h>
+ 
+ #include <libnetfilter_conntrack/libnetfilter_conntrack.h>
+ 
