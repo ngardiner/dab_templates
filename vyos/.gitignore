@@ -8,3 +8,7 @@ vyatta-bash/
 vyatta-biosdevname/
 vyatta-busybox/
 vyatta-cfg/
+vyatta-cfg-quagga/
+vyatta-zone/
+vyos-nhrp/
+vyos-opennhrp/

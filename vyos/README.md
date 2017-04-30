@@ -15,4 +15,12 @@ It is very unlikely that we will ever reach VyOS level functionality - at the ve
 /usr/local/bin/vbash - vyatta bash
 biosdevname - installs in /sbin
 busybox - issue
-vyatta-cfg - in progress
+vyatta-cfg - issue, unfixed
+vyatta-zone - works, installs perl modules (need to include perl)
+
+To fix busybox issue:
+- Fork busybox
+- Edit include/libbb.h
+Add:
+#include <sys/resource.h>
+(after mman.h, before socket.h>
