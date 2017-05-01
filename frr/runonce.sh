@@ -17,6 +17,13 @@ case "$1" in
 
     # Put first boot routines here
 
+    # Enable and start daemon
+    systemctl enable frr
+    systemctl start frr
+
+    # Create cli user
+    useradd -c "FRR CLI User" -d /root -g 0 -M -N -o -s /usr/bin/vtysh -u 0 admin
+
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable
     rm $0

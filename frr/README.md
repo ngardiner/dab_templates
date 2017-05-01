@@ -36,3 +36,12 @@ After booting, you should:
 
 - Edit ```/etc/frr/daemons``` and enable the daemons you require
 - Restart the frr daemons with the ```systemctl restart frr``` command
+- Set a password for the ```admin``` user, which is a user we create during build to provide direct cli access to FRR
+```
+passwd admin
+```
+- Log in as admin, and start using your router.
+
+## Bugs
+
+There appears to be a bug with the frr vtysh now that will cause vtysh to lose connections to daemons if you change the hostname via the CLI - not recommended currently.
