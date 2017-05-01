@@ -27,8 +27,7 @@ cd /usr/src/frr
     --enable-logfile-mask=0640 \
     --enable-rtadv \
     --enable-tcp-zebra \
-    --enable-fpm \
-    --with-pkg-git-version
+    --enable-fpm
 
 # Make the binaries
 make
@@ -80,7 +79,36 @@ cat <<EOFB > /etc/systemd/system/frr.service
 [Unit]
 Description=Cumulus Linux FRR
 After=syslog.target networking.service
+
+[Service]
+Nice=-5
+EnvironmentFile=/etc/default/frr
+Type=forking
+NotifyAccess=all
+StartLimitInterval=3m
+StartLimitBurst=3
+TimeoutSec=1m
+WatchdogSec=60s
+RestartSec=5
+Restart=on-abnormal
+LimitNOFILE=1024
+ExecStart=/usr/lib/frr/frr start
+ExecStop=/usr/lib/frr/frr stop
+ExecReload=/usr/lib/frr/frr-reload.py --reload /etc/frr/frr.conf
+
+[Install]
+WantedBy=network-online.target
 EOFB
+
+cat <<EOFC > /etc/frr/daemons
+zebra=yes
+bgpd=no
+ospfd=no
+ospf6d=no
+ripd=no
+ripngd=no
+isisd=no
+EOFC
 
 # Remove some of the packages added earlier for compilation
 # This will reduce the overall size of the image

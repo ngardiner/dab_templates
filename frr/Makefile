@@ -9,7 +9,7 @@ bootstrap:
 	dab bootstrap
 
 	# These are known packaged dependancies
-	dab install autoconf automake libtool make gawk libreadline-dev
+	dab install autoconf automake libtool make gawk libreadline-dev git
 	dab install texinfo dejagnu pkg-config libpam0g-dev libjson-c-dev bison
 	dab install python-pytest libc-ares-dev python3-dev flex
 
