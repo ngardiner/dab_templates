@@ -21,6 +21,7 @@ GC=git clone https://github.com/vyos/
 IP=igmpproxy
 IR=vyatta-iproute
 IS=ipset
+ISC=./configure --with-ksource=/usr --with-kbuild=/usr/src/build
 PA=pmacct
 PC=libcap
 PP=ppp
@@ -48,7 +49,7 @@ bootstrap:
 	dab install libnfnetlink-dev libmnl-dev libnetfilter-conntrack-dev
 	dab install libnetfilter-cttimeout-dev libnetfilter-cthelper0-dev
 	dab install libboost-filesystem-dev libglib2.0-dev libc-ares-dev
-	dab install libnetfilter-queue-dev libdb-dev
+	dab install libnetfilter-queue-dev libdb-dev linux-headers-generic
 
 	# Clone git repos from vyos
 	$(GC)$(BA) -b $(RELEASE)
@@ -101,7 +102,7 @@ bootstrap:
 	rsync -a $(WP) ${BASEDIR}/tmp/
 
 	# Apply patches prior to compile
-	cat patch/* | patch -p0
+	cat patch/* | patch -fp0
 
 	# Build Vyatta bash
 	$(DE) "$(CD)$(BA) && ./configure > /tmp/$(BA).configure.log 2>&1"
@@ -125,7 +126,7 @@ bootstrap:
 	$(DE) "$(CD)$(CF) && $(AM) > /tmp/$(CF).automake.log 2>&1"
 	$(DE) "$(CD)$(CF) && autoconf > /tmp/$(CF).autoconf.log 2>&1"
 	$(DE) "$(CD)$(CF) && ./configure > /tmp/$(CF).configure.log 2>&1"
-	cp rootfs/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h rootfs/usr/include/glibconfig.h
+	cp ${BASEDIR}/usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h ${BASEDIR}/usr/include/glibconfig.h
 	-$(DE) "$(CD)$(CF) && make > /tmp/$(CF).make.log 2>&1"
 	-$(DE) "$(CD)$(CF) && make install > /tmp/$(CF).makeinstall.log 2>&1"
 
@@ -212,7 +213,9 @@ bootstrap:
 	$(DE) "$(CD)$(IS) && $(AR) > /tmp/$(IS).autoreconf.log 2>&1"
 	$(DE) "$(CD)$(IS) && $(AM) > /tmp/$(IS).automake.log 2>&1"
 	$(DE) "$(CD)$(IS) && autoconf > /tmp/$(IS).autoconf.log 2>&1"
-	$(DE) "$(CD)$(IS) && ./configure > /tmp/$(IS).configure.log 2>&1"
+	mkdir -p ${BASEDIR}/usr/src/build
+	touch ${BASEDIR}/usr/src/build/.config
+	$(DE) "$(CD)$(IS) && $(ISC) > /tmp/$(IS).configure.log 2>&1"
 	$(DE) "$(CD)$(IS) && make > /tmp/$(IS).make.log 2>&1"
 	$(DE) "$(CD)$(IS) && make install > /tmp/$(IS).makeinstall.log 2>&1"
 

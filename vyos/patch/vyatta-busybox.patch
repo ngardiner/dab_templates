@@ -1,5 +1,5 @@
---- vyatta-busybox/include/libbb.h.orig	2017-04-30 21:30:09.708787259 +1000
-+++ vyatta-busybox/include/libbb.h	2017-04-30 21:30:52.629228527 +1000
+--- rootfs/tmp/vyatta-busybox/include/libbb.h.orig	2017-04-30 21:30:09.708787259 +1000
++++ rootfs/tmp/vyatta-busybox/include/libbb.h	2017-04-30 21:30:52.629228527 +1000
 @@ -29,6 +29,7 @@
  #include <sys/poll.h>
  #include <sys/ioctl.h>
