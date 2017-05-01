@@ -17,12 +17,6 @@ case "$1" in
 
     # Put first boot routines here
 
-    # Create FRR user/group
-    groupadd -g 92 frr
-    groupadd -r -g 85 frrvty
-    adduser --system --ingroup frr --home /var/run/frr/ --gecos "FRR suite" --shell /sbin/nologin frr
-    usermod -a -G frrvty frr
-
     # Once the script has completed execution, delete ourselves
     update-rc.d firstboot disable
     rm $0

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Create FRR user/group
+groupadd -g 92 frr
+groupadd -r -g 85 frrvty
+adduser --system --ingroup frr --home /var/run/frr/ --gecos "FRR suite" --shell /sbin/nologin frr
+usermod -a -G frrvty frr
+
 # Build sources
 cd /usr/src/frr
 ./bootstrap.sh
@@ -44,6 +50,14 @@ install -m 640 -o frr -g frr /dev/null /etc/frr/ldpd.conf
 install -m 640 -o frr -g frr /dev/null /etc/frr/nhrpd.conf    
 install -m 640 -o frr -g frrvty /dev/null /etc/frr/vtysh.conf
 
+# Uncomment the next line to enable packet forwarding for IPv4
+#net.ipv4.ip_forward=1
+
+# Uncomment the next line to enable packet forwarding for IPv6
+#  Enabling this option disables Stateless Address Autoconfiguration
+#  based on Router Advertisements for this host
+#net.ipv6.conf.all.forwarding=1
+
 # Enable MPLS
 cat << EOFA >> /etc/sysctl.conf
 # Enable MPLS Label processing on all interfaces
@@ -52,5 +66,25 @@ net.mpls.conf.eth1.input=1
 net.mpls.conf.eth2.input=1
 net.mpls.platform_labels=100000
 EOFA
+
+# Install and enable the systemd files which control the frr services
+install -m 644 tools/frr.service /etc/systemd/system/frr.service  
+install -m 644 cumulus/etc/default/frr /etc/default/frr  
+install -m 644 cumulus/etc/frr/daemons /etc/frr/daemons  
+install -m 644 cumulus/etc/frr/debian.conf /etc/frr/debian.conf  
+install -m 644 cumulus/etc/frr/Frr.conf /etc/frr/Frr.conf  
+install -m 644 -o frr -g frr cumulus/etc/frr/vtysh.conf /etc/frr/vtysh.conf
+
+# Enable the systemd service configuration
+cat <<EOFB > /etc/systemd/system/frr.service
+[Unit]
+Description=Cumulus Linux FRR
+After=syslog.target networking.service
+EOFB
+
+# Remove some of the packages added earlier for compilation
+# This will reduce the overall size of the image
+dpkg -r autoconf automake bison flex
+apt-get -y autoremove
 
 exit 0

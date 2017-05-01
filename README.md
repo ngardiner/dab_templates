@@ -88,12 +88,14 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | *Template*      | *Distro*      | *Description*                               |
 |-----------------|---------------|---------------------------------------------|
 | <a href="ansible/">ansible</a>         | Ubuntu Xenial | Ansible automation platform                 |
-| homeassistant   | Ubuntu Xenial | Home Automation System                      |
+| <a href="frr/>frr</a>             | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
+| <a href="homeassistant/">homeassistant</a>   | Ubuntu Xenial | Home Automation System                      |
 | <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
 | <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
-| <a href="lms/>lms</a>                          | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
+| <a href="lms/">lms</a>                          | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
 | <a href="logserver/">logserver</a>             | Ubuntu Xenial | rsyslog remote reception, logstash, webui   |
 | nginx_rproxy    | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
+| vyos            | Ubuntu Xenial | EXPERIMENTAL attempt to run vyos CLI in LXC |
 | <a href="xenial_minimal/">xenial_minimal</a>   | Ubuntu Xenial | Minimal Ubuntu Xenial Installation          |
 | <a href="xenial_standard/">xenial_standard</a> | Ubuntu Xenial | Standard Ubuntu Xenial Installation         |
 | <a href="zoneminder/">zoneminder</a>      | Ubuntu Xenial | IP Camera Manager used for security         |
