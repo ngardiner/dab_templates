@@ -13,6 +13,9 @@ bootstrap:
 	dab install texinfo dejagnu pkg-config libpam0g-dev libjson-c-dev bison
 	dab install python-pytest libc-ares-dev python3-dev
 
+	# Clone repository
+	git clone https://github.com/frrouting/frr.git rootfs/usr/src/frr
+
 	# See custom.sh for build and configuration scripts for frr
 
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
