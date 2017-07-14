@@ -88,7 +88,7 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | *Template*      | *Distro*      | *Description*                               |
 |-----------------|---------------|---------------------------------------------|
 | <a href="ansible/">ansible</a>         | Ubuntu Xenial | Ansible automation platform                 |
-| <a href="frr/>frr</a>             | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
+| <a href="frr/">frr</a>             | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
 | <a href="homeassistant/">homeassistant</a>   | Ubuntu Xenial | Home Automation System                      |
 | <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
 | <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
