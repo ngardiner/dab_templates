@@ -1,4 +1,4 @@
-# Logitech Medaa Server
+# Logitech Media Server
 
 ## Template Details
 
