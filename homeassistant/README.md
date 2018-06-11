@@ -6,8 +6,8 @@ Home Assistant is a home automation platform written in Python. It provides the 
 - Creates a Ubuntu Xenial template with Python 3 and Home Assistant home automation system
 - NOTE: Currently, this image will require internet access for full functionality due to the software installing some dependancies at runtime.
 - Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
-- Total uncompressed image size is *907 MB*
-- Total compressed image size is *321 MB*
+- Total uncompressed image size is *938 MB*
+- Total compressed image size is *297 MB*
 
 ### Prerequisites
 - Requires the python3-pip and libmysqlclient-dev packages to be installed on the (dab) system used to create the template.

@@ -14,34 +14,35 @@ bootstrap:
 	dab install python3-markupsafe python3-pyparsing python3-requests python3-setuptools
 	dab install python3-tz python3-voluptuous python3-xmltodict python3-yaml python3-zeroconf
 
-	pip3 install -d . homeassistant
-	pip3 install -d . mysqlclient
-	pip3 install -d . pycrypto
+	pip3 download homeassistant
+	pip3 download mysqlclient
+	pip3 download pycrypto
 	install -m 0644 home-assistant@hass.service ${BASEDIR}/etc/systemd/system/home-assistant@hass.service
-	install -m 0600 aiohttp-2.0.7.tar.gz ${BASEDIR}/tmp
-#	install -m 0600 appdirs-1.4.3-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 astral-1.4-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 async_timeout-1.2.1-py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 chardet-3.0.2-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 homeassistant-0.45.1-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 Jinja2-2.9.6-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 MarkupSafe-1.0.tar.gz ${BASEDIR}/tmp
-	install -m 0600 multidict-2.1.5.tar.gz ${BASEDIR}/tmp
-	install -m 0600 mysqlclient-1.3.10.tar.gz ${BASEDIR}/tmp
-#	install -m 0600 packaging-16.8-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 pip-9.0.1-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 pycrypto-2.6.1.tar.gz ${BASEDIR}/tmp
-#	install -m 0600 pyparsing-2.2.0-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 pytz-2017.2-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 PyYAML-3.12.tar.gz ${BASEDIR}/tmp
-	install -m 0600 requests-2.14.2-py2.py3-none-any.whl ${BASEDIR}/tmp
-#	install -m 0600 setuptools-35.0.2-py2.py3-none-any.whl ${BASEDIR}/tmp
-#	install -m 0600 six-1.10.0-py2.py3-none-any.whl ${BASEDIR}/tmp
-	install -m 0600 typing-3.6.1.tar.gz ${BASEDIR}/tmp
-	install -m 0600 voluptuous-0.10.5.tar.gz ${BASEDIR}/tmp
-	install -m 0600 yarl-0.10.2.tar.gz ${BASEDIR}/tmp
 
-	dab exec pip3 install --no-index --find-links=file:/tmp homeassistant mysqlclient pycrypto
+	install -m 0600 aiohttp-3.2.1-cp35-cp35m-manylinux1_x86_64.whl ${BASEDIR}/tmp
+	install -m 0600 astral-1.6.1-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 async_timeout-3.0.0-py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 attrs-18.1.0-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 certifi-2018.4.16-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 chardet-3.0.4-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 homeassistant-0.71.0-py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 idna-2.6-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 idna-ssl-1.0.1.tar.gz ${BASEDIR}/tmp
+	install -m 0600 Jinja2-2.10-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 MarkupSafe-1.0.tar.gz ${BASEDIR}/tmp
+	install -m 0600 multidict-4.3.1-cp35-cp35m-manylinux1_x86_64.whl ${BASEDIR}/tmp
+	install -m 0600 mysqlclient-1.3.12.tar.gz ${BASEDIR}/tmp
+	install -m 0600 pip-10.0.1-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 pycrypto-2.6.1.tar.gz ${BASEDIR}/tmp
+	install -m 0600 pytz-2018.4-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 PyYAML-3.12.tar.gz ${BASEDIR}/tmp
+	install -m 0600 requests-2.18.4-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 typing-3.6.4-py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 urllib3-1.22-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 voluptuous-0.11.1-py2.py3-none-any.whl ${BASEDIR}/tmp
+	install -m 0600 yarl-1.2.5-cp35-cp35m-manylinux1_x86_64.whl ${BASEDIR}/tmp
+
+	dab exec pip3 install --no-index --find-links=file:/tmp aiohttp homeassistant mysqlclient pycrypto
 	dab exec rm -f /tmp/*.whl
 	dab exec rm -f /tmp/*.tar.gz
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
@@ -59,7 +60,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-homeassistant_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-18.04-homeassistant_18.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

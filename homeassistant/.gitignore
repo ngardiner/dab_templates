@@ -5,3 +5,4 @@ logfile
 rootfs
 *.tar.gz
 *.whl
+ubuntu-18.04-homeassistant_18.04-1_amd64.tar.gz
