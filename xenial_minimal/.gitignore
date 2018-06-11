@@ -3,4 +3,4 @@ config
 info
 logfile
 rootfs
-debian-8.0-minimal_8.5-1_amd64.tar.gz
+ubuntu-16.04-minimal_16.04-1_amd64.tar.gz
