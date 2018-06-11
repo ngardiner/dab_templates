@@ -7,6 +7,8 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
+	dab install python-cffi-backend
+	dab install python3-cffi-backend
 	dab install ansible
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
@@ -23,7 +25,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-ansible_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-18.04-ansible_18.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:
