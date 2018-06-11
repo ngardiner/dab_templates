@@ -87,9 +87,12 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 ## Templates
 | *Template*      | *Distro*      | *Description*                               |
 |-----------------|---------------|---------------------------------------------|
-| <a href="ansible/">ansible</a>         | Ubuntu Xenial | Ansible automation platform                 |
+| <a href="ansible/">ansible</a>         | Ubuntu Bionic | Ansible automation platform                 |
+| <a href="bionic_minimal/">bionic_minimal</a> | Ubuntu Bionic | Minimal Ubuntu Bionic Installation |
+| <a href="bionic_standard/">bionic_standard</a> | Ubuntu Bionic | Standard Ubuntu Bionic Installation |
 | <a href="frr/">frr</a>             | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
-| <a href="homeassistant/">homeassistant</a>   | Ubuntu Xenial | Home Automation System                      |
+| <a href="haproxy/">haproxy</a>     | Ubuntu Bionic | HAProxy |
+| <a href="homeassistant/">homeassistant</a>   | Ubuntu Bionic | Home Automation System                      |
 | <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
 | <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
 | <a href="lms/">lms</a>                          | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
