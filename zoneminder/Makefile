@@ -7,6 +7,7 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
+	dab install perl-openssl-defaults
 	dab install apache2 libdbi-perl perl zoneminder
 	dab install php7.0 libapache2-mod-php7.0
 	dab install ffmpeg
@@ -32,7 +33,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-16.04-zoneminder_16.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-18.04-zoneminder_18.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:
