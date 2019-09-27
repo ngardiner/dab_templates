@@ -90,6 +90,8 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | <a href="ansible/">ansible</a>                 | Ubuntu Bionic | Ansible automation platform                 |
 | <a href="bionic_minimal/">bionic_minimal</a>   | Ubuntu Bionic | Minimal Ubuntu Bionic Installation          |
 | <a href="bionic_standard/">bionic_standard</a> | Ubuntu Bionic | Standard Ubuntu Bionic Installation         |
+| <a href="buster_minimal/">buster_minimal</a>   | Debian Buster | Minimal Debian Buster Installation          |
+| <a href="buster_standard/">buster_standard</a> | Debian Buster | Standard Debian Buster Installation         |
 | <a href="disco_minimal/">disco_minimal</a>     | Ubuntu Disco  | Minimal Ubuntu Disco Installation           |
 | <a href="disco_standard/">disco_standard</a>   | Ubuntu Disco  | Standard Ubuntu Disco Installation          |
 | <a href="frr/">frr</a>                         | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
@@ -103,7 +105,7 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | <a href="nginx_rproxy/">nginx_rproxy</a>       | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
 | <a href="stretch_minimal/">stretch_minimal</a>   | Debian Stretch | Minimal Debian Jessie Installation          |
 | <a href="stretch_standard/">stretch_standard</a> | Debian Stretch | Standard Debian Jessie Installation         |
-| <a href="vyos/">vyos</a>            | Ubuntu Xenial | EXPERIMENTAL attempt to run vyos CLI in LXC |
+| <a href="vyos/">vyos</a>                       | Ubuntu Xenial | EXPERIMENTAL attempt to run vyos CLI in LXC |
 | <a href="xenial_minimal/">xenial_minimal</a>   | Ubuntu Xenial | Minimal Ubuntu Xenial Installation          |
 | <a href="xenial_standard/">xenial_standard</a> | Ubuntu Xenial | Standard Ubuntu Xenial Installation         |
-| <a href="zoneminder/">zoneminder</a>      | Ubuntu Xenial | IP Camera Manager used for security         |
+| <a href="zoneminder/">zoneminder</a>           | Ubuntu Xenial | IP Camera Manager used for security         |
