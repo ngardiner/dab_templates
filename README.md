@@ -85,19 +85,21 @@ Each template directory contains two files to aid with customization of the temp
 Packages downloaded will be cached in the cache directory at the root of the repository. This will make subsequent DAB builds much faster.
 
 ## Templates
-| *Template*                                   | *Distro*      | *Description*                               |
-|----------------------------------------------|---------------|---------------------------------------------|
+| *Template*                                     | *Distro*      | *Description*                               |
+|------------------------------------------------|---------------|---------------------------------------------|
 | <a href="ansible/">ansible</a>                 | Ubuntu Bionic | Ansible automation platform                 |
-| <a href="bionic_minimal/">bionic_minimal</a>   | Ubuntu Bionic | Minimal Ubuntu Bionic Installation |
-| <a href="bionic_standard/">bionic_standard</a> | Ubuntu Bionic | Standard Ubuntu Bionic Installation |
+| <a href="bionic_minimal/">bionic_minimal</a>   | Ubuntu Bionic | Minimal Ubuntu Bionic Installation          |
+| <a href="bionic_standard/">bionic_standard</a> | Ubuntu Bionic | Standard Ubuntu Bionic Installation         |
+| <a href="disco_minimal/">disco_minimal</a>     | Ubuntu Disco  | Minimal Ubuntu Disco Installation           |
+| <a href="disco_standard/">disco_standard</a>   | Ubuntu Disco  | Standard Ubuntu Disco Installation          |
 | <a href="frr/">frr</a>                         | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
-| <a href="haproxy/">haproxy</a>                 | Ubuntu Bionic | HAProxy |
+| <a href="haproxy/">haproxy</a>                 | Ubuntu Bionic | HAProxy                                     |
 | <a href="homeassistant/">homeassistant</a>     | Ubuntu Bionic | Home Automation System                      |
 | <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
 | <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
 | <a href="lms/">lms</a>                         | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
 | <a href="logserver/">logserver</a>             | Ubuntu Xenial | rsyslog remote reception, logstash, webui   |
-| <a href="mariadb/">mariadb</a>                 | Ubuntu Xenial | Database |
+| <a href="mariadb/">mariadb</a>                 | Ubuntu Xenial | MariaDB Database Server                     |
 | <a href="nginx_rproxy/">nginx_rproxy</a>       | Ubuntu Xenial | nginx Reverse Proxy (for use as a DMZ host) |
 | <a href="stretch_minimal/">stretch_minimal</a>   | Debian Stretch | Minimal Debian Jessie Installation          |
 | <a href="stretch_standard/">stretch_standard</a> | Debian Stretch | Standard Debian Jessie Installation         |
