@@ -12,7 +12,7 @@ SSH_KEY +="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7CAJhyapph+OQV3evDflSdHn9zRY+c
 PACKAGES += sudo tcpdump traceroute
 
 # If you would like to use ansible to manage these hosts, you need the following
-PACKAGES += aptitude python
+PACKAGES += aptitude python3
 
 # Set this to 1 to permit root login over SSH.
 # This is important if you are using Proxmox without a public SSH key, as 
