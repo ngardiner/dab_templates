@@ -94,6 +94,8 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | <a href="buster_standard/">buster_standard</a> | Debian Buster | Standard Debian Buster Installation         |
 | <a href="disco_minimal/">disco_minimal</a>     | Ubuntu Disco  | Minimal Ubuntu Disco Installation           |
 | <a href="disco_standard/">disco_standard</a>   | Ubuntu Disco  | Standard Ubuntu Disco Installation          |
+| <a href="focal_minimal/">focal_mininmal</a>    | Ubuntu Focal  | Minimal Ubuntu Focal Installation           |
+| <a href="focal_standard/">focal_standard</a>   | Ubuntu Focal  | Standard Ubuntu Focal Installation          |
 | <a href="frr/">frr</a>                         | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
 | <a href="haproxy/">haproxy</a>                 | Ubuntu Bionic | HAProxy                                     |
 | <a href="homeassistant/">homeassistant</a>     | Ubuntu Bionic | Home Automation System                      |
