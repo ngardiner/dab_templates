@@ -3,4 +3,4 @@ config
 info
 logfile
 rootfs
-debian-8.0-standard_8.5-1_amd64.tar.gz
+debian-8.0-standard_8.11-1_amd64.tar.gz
