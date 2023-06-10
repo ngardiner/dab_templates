@@ -3,4 +3,4 @@ config
 info
 logfile
 rootfs
-debian-10.0-standard_10.0-1_amd64.tar.gz
+debian-11-standard_11.0-1_amd64.tar.gz
