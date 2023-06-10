@@ -7,7 +7,6 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install python-cffi-backend
 	dab install python3-cffi-backend
 	dab install ansible
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
