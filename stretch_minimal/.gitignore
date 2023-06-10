@@ -3,4 +3,4 @@ config
 info
 logfile
 rootfs
-debian-9.0-minimal_9.4-1_amd64.tar.gz
+debian-9.0-minimal_9.13-1_amd64.tar.gz

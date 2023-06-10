@@ -3,5 +3,5 @@
 - Built from a minimal debootstrap install of Debian Stretch
 - Contains additional important packages such as an NTP Client and CA Certificates
 - Adds any customizations such as root login enabled or SSH keys from ../Makefile.global
-- Total uncompressed image size is *409 MB*
-- Total compressed image size is *144 MB*
+- Total uncompressed image size is *387 MB*
+- Total compressed image size is *145 MB*
