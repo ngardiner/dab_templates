@@ -87,9 +87,11 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 ## Templates
 | *Template*                                     | *Distro*      | *Description*                               |
 |------------------------------------------------|---------------|---------------------------------------------|
-| <a href="ansible/">ansible</a>                 | Ubuntu Bionic | Ansible automation platform                 |
+| <a href="ansible/">ansible</a>                 | Ubuntu Kinetic | Ansible automation platform                 |
 | <a href="bionic_minimal/">bionic_minimal</a>   | Ubuntu Bionic | Minimal Ubuntu Bionic Installation          |
 | <a href="bionic_standard/">bionic_standard</a> | Ubuntu Bionic | Standard Ubuntu Bionic Installation         |
+| <a href="bullseye_minimal/">bullseye_minimal</a> | Debian Bullseye | Minimal Debian Bullseye Installation    |
+| <a href="bullseye_standard/">bullseye_standard</a> | Debian Bullseye | Standard Debian Bullseye Installation |
 | <a href="buster_minimal/">buster_minimal</a>   | Debian Buster | Minimal Debian Buster Installation          |
 | <a href="buster_standard/">buster_standard</a> | Debian Buster | Standard Debian Buster Installation         |
 | <a href="disco_minimal/">disco_minimal</a>     | Ubuntu Disco  | Minimal Ubuntu Disco Installation           |
