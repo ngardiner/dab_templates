@@ -16,6 +16,8 @@ case "$1" in
   start)
 
     # Put first boot routines here
+    mysql -e 'source /tmp/zm_create.sql'
+    rm /tmp/*.sql
 
     rm $0
   ;;

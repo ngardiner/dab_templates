@@ -2,4 +2,4 @@ config
 info
 logfile
 rootfs
-*.tar.gz
+ubuntu-22.04-mariadb_22.04-1_amd64.tar.gz

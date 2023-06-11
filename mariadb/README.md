@@ -17,3 +17,7 @@ To create the template archive:
 To clean and return the template directory to original state
 
 ```make clean```
+
+detecting final appliance size: 1242 MB
+detecting final commpressed appliance size: 227 MB
+
