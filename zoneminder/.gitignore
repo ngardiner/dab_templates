@@ -3,4 +3,4 @@ info
 logfile
 rootfs
 *.tar.gz
-ubuntu-18.04-zoneminder_18.04-1_amd64.tar.gz
+ubuntu-22.10-zoneminder_22.10-1_amd64.tar.gz

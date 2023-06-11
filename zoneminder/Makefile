@@ -7,9 +7,9 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install perl-openssl-defaults
-	dab install apache2 libdbi-perl perl zoneminder
-	dab install php7.0 libapache2-mod-php7.0
+	dab install perl-openssl-defaults libdrm-common libdrm2
+	dab install apache2 apache2-bin libapache2-mod-php8.1 php8.1 libphp8.1-embed
+	dab install libdbi-perl perl zoneminder
 	dab install ffmpeg
 
 	# Enable apache2 modules
