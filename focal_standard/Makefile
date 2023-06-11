@@ -11,7 +11,7 @@ bootstrap:
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
 	dab exec /bin/bash /tmp/custom.sh
-	dab exec rm -f /tmp/custom.sh
+	dab exec rm -f /tmp/custom.sh || exit 0
 
 finalize:
 	dab finalize
