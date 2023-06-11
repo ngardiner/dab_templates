@@ -3,4 +3,5 @@ config
 info
 logfile
 rootfs
+ubuntu-22.04-ansible_22.04-1_amd64.tar.gz
 ubuntu-22.10-ansible_22.10-1_amd64.tar.gz
