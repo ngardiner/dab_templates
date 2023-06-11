@@ -69,7 +69,7 @@ endif
 
 tz:
 ifneq ($(strip $(TIMEZONE)),)
-	dab exec rm -rf /etc/localtime
+	dab exec rm -rf /etc/localtime || exit 0
 	dab exec ln -s /usr/share/zoneinfo/$(TIMEZONE) /etc/localtime
 	echo $(TIMEZONE) > $(BASEDIR)/etc/timezone
 endif

@@ -94,15 +94,13 @@ Packages downloaded will be cached in the cache directory at the root of the rep
 | <a href="bullseye_standard/">bullseye_standard</a> | Debian Bullseye | Standard Debian Bullseye Installation |
 | <a href="buster_minimal/">buster_minimal</a>   | Debian Buster | Minimal Debian Buster Installation          |
 | <a href="buster_standard/">buster_standard</a> | Debian Buster | Standard Debian Buster Installation         |
-| <a href="disco_minimal/">disco_minimal</a>     | Ubuntu Disco  | Minimal Ubuntu Disco Installation           |
-| <a href="disco_standard/">disco_standard</a>   | Ubuntu Disco  | Standard Ubuntu Disco Installation          |
-| <a href="eoan_minimal/">eoan_mininmal</a>      | Ubuntu Eoan   | Minimal Ubuntu Eoan Installation            |
-| <a href="eoan_standard/">eoan_standard</a>     | Ubuntu Eoan   | Standard Ubuntu Eoan Installation           |
 | <a href="focal_minimal/">focal_mininmal</a>    | Ubuntu Focal  | Minimal Ubuntu Focal Installation           |
 | <a href="focal_standard/">focal_standard</a>   | Ubuntu Focal  | Standard Ubuntu Focal Installation          |
 | <a href="frr/">frr</a>                         | Ubuntu Xenial | Free Range Routing Advanced Routing Engine  |
 | <a href="haproxy/">haproxy</a>                 | Ubuntu Bionic | HAProxy                                     |
 | <a href="homeassistant/">homeassistant</a>     | Ubuntu Bionic | Home Automation System                      |
+| <a href="jammy_minimal/">jammy_minimal</a>     | Ubuntu Jammy  | Minimal Ubuntu Jammy Installation           |
+| <a href="jammy_standard/">jammy_standard</a>   | Ubuntu Jammy  | Standard Ubuntu Jammy Installation          |
 | <a href="jessie_minimal/">jessie_minimal</a>   | Debian Jessie | Minimal Debian Jessie Installation          |
 | <a href="jessie_standard/">jessie_standard</a> | Debian Jessie | Standard Debian Jessie Installation         |
 | <a href="lms/">lms</a>                         | Ubuntu Xenial | Logitech Media Server - Whole House Audio   |
