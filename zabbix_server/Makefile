@@ -7,7 +7,7 @@ all: info/init_ok bootstrap global finalize
 
 bootstrap:
 	dab bootstrap
-	dab install fping libiksemel3 libmysqlclient20 libodbc1 mysql-server-5.7 mysql-common
+	dab install fping libiksemel3 libodbc1 mysql-client mysql-server mysql-common
 	dab install zabbix-server-mysql
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults

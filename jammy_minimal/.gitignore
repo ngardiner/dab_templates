@@ -3,4 +3,4 @@ config
 info
 logfile
 rootfs
-ubuntu-20.04-minimal_20.04-1_amd64.tar.gz
+ubuntu-22.04-minimal_22.04-1_amd64.tar.gz
