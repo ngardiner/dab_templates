@@ -16,7 +16,7 @@ bootstrap:
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
 	dab exec /bin/bash /tmp/custom.sh
-	dab exec rm -f /tmp/custom.sh
+	dab exec rm -f /tmp/custom.sh || exit 0
 	mknod -m 0666 ${BASEDIR}/dev/fuse c 10 229
 
 finalize:
