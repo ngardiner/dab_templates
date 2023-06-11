@@ -3,4 +3,4 @@ config
 info
 logfile
 rootfs
-debian-11-minimal_11.0-1_amd64.tar.gz
+debian-12-minimal_12.0-1_amd64.tar.gz
