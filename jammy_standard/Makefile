@@ -22,7 +22,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp ubuntu-20.04-standard_20.04-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-22.04-standard_22.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:
