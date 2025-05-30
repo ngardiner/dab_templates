@@ -1,0 +1,14 @@
+version: '3'
+services:
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    network_mode: ${DOCKER_NETWORK}
+    environment:
+      - TUNNEL_TOKEN=${CF_API_TOKEN}
+    command: tunnel run
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    labels:
+      - "traefik.enable=false"
