@@ -9,6 +9,5 @@ TUNNEL_NAME="dab-cloudflare-tunnel"
 TUNNEL_HOSTNAME=""
 TARGET_SERVICE_URL=""
 
-# Docker Compose Specific
+# Container Specific
 CONTAINER_NAME="cloudflare-tunnel"
-DOCKER_NETWORK="bridge"
