@@ -23,7 +23,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp debian-9.0-minimal_9.4-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp debian-13-minimal_13.0-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

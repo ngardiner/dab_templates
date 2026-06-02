@@ -6,7 +6,8 @@ include ../Makefile.global
 all: info/init_ok bootstrap global finalize
 
 bootstrap:
-	dab bootstrap
+	dab bootstrap --minimal
+	dab install apt-transport-https ca-certificates locales ntpdate
 	install -m 0700 runonce.sh ${BASEDIR}/etc/init.d/firstboot
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
@@ -22,7 +23,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp debian-13-standard_13.0-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-26.04-minimal_26.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

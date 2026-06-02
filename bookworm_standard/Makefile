@@ -22,7 +22,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp debian-10.0-standard_10.0-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp debian-12-standard_12.0-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:

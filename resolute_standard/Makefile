@@ -11,7 +11,7 @@ bootstrap:
 	dab exec update-rc.d firstboot defaults
 	install -m 0700 custom.sh ${BASEDIR}/tmp
 	dab exec /bin/bash /tmp/custom.sh
-	dab exec rm -f /tmp/custom.sh
+	dab exec rm -f /tmp/custom.sh || exit 0
 
 finalize:
 	dab finalize
@@ -22,7 +22,7 @@ info/init_ok: dab.conf
 
 .PHONY: template
 template:
-	cp debian-13-standard_13.0-1_amd64.tar.gz /var/lib/vz/template/cache
+	cp ubuntu-26.04-standard_26.04-1_amd64.tar.gz /var/lib/vz/template/cache
 
 .PHONY: clean
 clean:
